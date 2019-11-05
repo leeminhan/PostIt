@@ -1,3 +1,3 @@
 # PostIt
 
-A 50.001 roject
+A 50.001 project
