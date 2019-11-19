@@ -1,0 +1,242 @@
+<!-- 
+/*
+ *	This content is generated from the PSD File Info.
+ *	(Alt+Shift+Ctrl+I).
+ *
+ *	@desc 		
+ *	@file 		notifications
+ *	@date 		0
+ *	@title 		Notifications
+ *	@author 	
+ *	@keywords 	
+ *	@generator 	Export Kit v1.2.9.xd
+ *
+*/
+ -->
+<psd>
+	<layers name="notifications" path=" ek125_301_shape_effects/" >
+		<layer name="_bg__notifications" type="shape" shapeType="rectangle" color="0xeceff0" x="0" y="0" width="375" height="812" />
+
+		<layer name="display_shape" type="group" x="2919" y="-1229" width="0" height="0" >
+
+		</layer>
+		<layer name="bg" type="image" src="skins/bg.png" x="0" y="183" width="375" height="100" />
+		<layer name="_11_23_am" type="text" font="Europa" justification="center" lineHeight="12" color="0x#798186" size="12" x="312" y="198" width="51" height="17" >
+			<![CDATA[11:23 AM]]>
+		</layer>
+		<layer name="badminton_friendly_session" type="text" font="Europa" justification="left" lineHeight="35" color="0x#334856" size="15" x="110" y="204" width="195" height="22" >
+			<![CDATA[Badminton Friendly Session]]>
+		</layer>
+		<layer name="join_jennifer_lee_and_4_others_for_a__game_of_badminton_at_changi_on_27th__nov__4_30_pm_" type="text" font="Europa" justification="left" lineHeight="14" color="0x#6e8ca0" size="14" x="111" y="224" width="237" height="57" >
+			<![CDATA[Join Jennifer Lee and 4 others for a 
+game of badminton at Changi on 27th 
+Nov, 4:30 pm.]]>
+		</layer>
+		<layer name="line_28" type="image" src="skins/line_28.png" x="20.5" y="282" width="355" height="1" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0xf0f3f4" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="ellipse_16" type="shape" shapeType="ellipse" color="0x888888" radius="35 / 35" x="20" y="198" width="68" height="68" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0x6a7074" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="ellipse_16_ek1" type="shape" shapeType="ellipse" color="0x888888" radius="35 / 35" x="20" y="198" width="68" height="68" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0x6a7074" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="bg_ek1" type="image" src="skins/bg_ek1.png" x="0" y="283" width="375" height="100" />
+		<layer name="aug_21" type="text" font="Europa" justification="right" lineHeight="12" color="0x#798186" size="12" x="318" y="298" width="40" height="17" >
+			<![CDATA[Aug 21]]>
+		</layer>
+		<layer name="rock_music_jam" type="text" font="Europa" justification="left" lineHeight="35" color="0x#334856" size="15" x="110" y="304" width="114" height="22" >
+			<![CDATA[Rock Music Jam]]>
+		</layer>
+		<layer name="join_ryan_doug_and_3_others_for_playing_music_at_the_music_room_sutd__on_24th__nov_5_00_pm__" type="text" font="Europa" justification="left" lineHeight="14" color="0x#6e8ca0" size="14" x="111" y="324" width="249" height="57" >
+			<![CDATA[Join Ryan Doug and 3 others for playing
+music at the Music Room SUTD, on 24th 
+Nov 5:00 pm. ]]>
+		</layer>
+		<layer name="line_28_ek1" type="image" src="skins/line_28_ek1.png" x="22.5" y="382" width="353" height="1" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0xf0f3f4" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="ellipse_16_ek2" type="shape" shapeType="ellipse" color="0x888888" radius="35 / 35" x="20" y="298" width="68" height="68" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0x6a7074" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="bg_ek2" type="image" src="skins/bg_ek2.png" x="0" y="383" width="375" height="100" />
+		<layer name="aug_19" type="text" font="Europa" justification="right" lineHeight="12" color="0x#798186" size="12" x="318" y="398" width="40" height="17" >
+			<![CDATA[Aug 19]]>
+		</layer>
+		<layer name="order_mcdonalds_ccp" type="text" font="Europa" justification="left" lineHeight="35" color="0x#334856" size="15" x="110" y="404" width="157" height="22" >
+			<![CDATA[Order McDonalds CCP]]>
+		</layer>
+		<layer name="join_jason_chow_and_2_others_to_order_food_from_mcdonalds_ccp__on_23rd_nov_6_00_pm__" type="text" font="Europa" justification="left" lineHeight="14" color="0x#6e8ca0" size="14" x="111" y="424" width="243" height="75" >
+			<![CDATA[Join Jason Chow and 2 others to order
+food from McDonalds CCP, on 23rd Nov
+6:00 pm.
+]]>
+		</layer>
+		<layer name="line_28_ek2" type="image" src="skins/line_28_ek2.png" x="20.5" y="482" width="355" height="1" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0xf0f3f4" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="mcd" type="image" src="skins/mcd.png" x="29" y="406" width="53" height="47" />
+		<layer name="ellipse_16_ek3" type="shape" shapeType="ellipse" color="0x888888" radius="35 / 35" x="20" y="398" width="68" height="68" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0x6a7074" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="bg_ek3" type="image" src="skins/bg_ek3.png" x="0" y="484" width="375" height="100" />
+		<layer name="jul_19" type="text" font="Europa" justification="right" lineHeight="12" color="0x#798186" size="12" x="324" y="499" width="34" height="17" >
+			<![CDATA[Jul 19]]>
+		</layer>
+		<layer name="data_science_workshop" type="text" font="Europa" justification="left" lineHeight="35" color="0x#334856" size="15" x="106" y="497" width="167" height="22" >
+			<![CDATA[Data Science Workshop]]>
+		</layer>
+		<layer name="join_lee_min_han_and_20_others_for_a_data_analytics_workshop_at_think_tank_13_sutd__on_" type="text" font="Europa" justification="left" lineHeight="14" color="0x#6e8ca0" size="14" x="107" y="517" width="236" height="57" >
+			<![CDATA[Join Lee Min Han and 20 others for a
+Data Analytics workshop at Think Tank
+13 SUTD, on ]]>
+		</layer>
+		<layer name="line_28_ek3" type="image" src="skins/line_28_ek3.png" x="20.5" y="583" width="355" height="1" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0xf0f3f4" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="book" type="image" src="skins/book.png" x="5" y="482" width="101" height="101" />
+		<layer name="ellipse_16_ek4" type="shape" shapeType="ellipse" color="0x888888" radius="35 / 35" x="20" y="499" width="68" height="68" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0x6a7074" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="bg_ek4" type="shape" shapeType="rectangle" color="0xffffff" x="0" y="100" width="376" height="82" />
+		<layer name="bg_ek5" type="image" src="skins/bg_ek5.png" x="15.3359375" y="117" width="344.185546875" height="45" />
+		<layer name="search_notifications" type="text" font="Europa" justification="center" lineHeight="35" color="0x#6e8ca0" size="15" x="23" y="129" width="135" height="22" >
+			<![CDATA[Search Notifications]]>
+		</layer>
+		<layer name="ellipse_27" type="shape" shapeType="ellipse" color="0xc8d1d3" radius="7 / 7" x="324" y="131" width="10" height="10" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc8d1d3" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="line_30" type="image" src="skins/line_30.png" x="334.08569335938" y="142.08581542969" width="5.82861328125" height="5.828369140625" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc8d1d3" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="bg_ek6" type="image" src="skins/bg_ek6.png" x="0" y="0" width="375" height="100" />
+		<layer name="divider" type="image" src="skins/divider.png" x="0.5" y="99" width="375" height="1" >
+			<effects>
+				<effect type="frameFX" lineSize="1" color="0xe0e1e2" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="line_17" type="image" src="skins/line_17.png" x="22.089111328125" y="51.59423828125" width="10.82177734375" height="9.8033447265625" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0x324755" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="path_44" type="image" src="skins/path_44.png" x="22.08837890625" y="58.593383789062" width="10.74462890625" height="9.8580322265625" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0x334856" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="path_67" type="image" src="skins/path_67.png" x="335" y="50.814086914062" width="20" height="20" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0x334856" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="path_68" type="image" src="skins/path_68.png" x="341.80004882812" y="50.114135742188" width="13.89990234375" height="13.900024414062" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0x334856" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="line_29" type="image" src="skins/line_29.png" x="348.58569335938" y="52.400024414062" width="4.82861328125" height="4.828369140625" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0x324755" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="notifications" type="text" font="Europa" justification="center" lineHeight="18" color="0x#324755" size="18" x="134" y="49.175415039062" width="107" height="27" >
+			<![CDATA[Notifications]]>
+		</layer>
+
+		<layer name="battery" type="group" x="336" y="17.333374023438" width="24.328125" height="11.333251953125" >
+			<layer name="border" type="shape" shapeType="round rectangle" color="0x#ffffff00" radius="2.6666667461395264" alpha="0.35" x="0" y="0" width="20" height="9.3333740234375" >
+				<effects>
+					<effect type="frameFX" lineSize="1" color="0x000000" alpha="255" />
+				</effects>
+			</layer>
+			<layer name="cap" type="image" src="skins/cap.png" x="23" y="4" width="1.328125" height="4" />
+			<layer name="capacity" type="shape" shapeType="round rectangle" color="0x000000" radius="1.3333333730697632" x="2" y="2" width="18" height="7.3333740234375" />
+
+		</layer>
+		<layer name="wifi" type="image" src="skins/wifi.png" x="315.69384765625" y="17.330688476562" width="15.272216796875" height="10.965576171875" />
+		<layer name="cellular_connection" type="image" src="skins/cellular_connection.png" x="293.66674804688" y="17.666625976562" width="17" height="10.666748046875" />
+		<layer name="__p_____time" type="text" font="SF Pro Text" justification="center" lineHeight="15" color="0x#000000" size="15" x="18" y="14.329956054688" width="54" height="28.5" >
+			<![CDATA[9:41]]>
+		</layer>
+		<layer name="path_16" type="image" src="skins/path_16.png" x="-45" y="692.162109375" width="465" height="160" >
+			<effects>
+				<effect type="dropShadow" distance="240" angle="" color="0x505c62" alpha="41" blurX="2" blurY="2" />
+			</effects>
+		</layer>
+		<layer name="ellipse_10" type="shape" shapeType="ellipse" color="0xffffff" radius="41 / 41" x="147" y="704" width="82" height="82" />
+		<layer name="path_20" type="image" src="skins/path_20.png" x="128" y="695" width="120" height="120" >
+			<effects>
+				<effect type="dropShadow" distance="160" angle="" color="0xfc9667" alpha="255" blurX="2" blurY="2" />
+			</effects>
+		</layer>
+		<layer name="path_18" type="image" src="skins/path_18.png" x="173" y="730" width="30" height="30" />
+		<layer name="path_19" type="image" src="skins/path_19.png" x="182.64868164062" y="739.02990722656" width="10.563232421875" height="10.563232421875" />
+		<layer name="ellipse_17" type="shape" shapeType="ellipse" color="0x000000" radius="7.4000244140625 / 7.4000244140625" alpha="0" x="254" y="760" width="10.800048828125" height="10.800048828125" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc3cbce" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="line_20" type="image" src="skins/line_20.png" x="265.3857421875" y="771.38586425781" width="8.028564453125" height="8.0284423828125" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc3cbce" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="profile" type="text" font="Rift Soft" justification="center" lineHeight="8" color="0x#c3cbce" size="8" x="317" y="784" width="33" height="12" >
+			<![CDATA[PROFILE]]>
+		</layer>
+		<layer name="icn_home_inactive" type="image" src="skins/icn_home_inactive.png" x="29" y="759" width="18.199951171875" height="20" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc3cbce" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="ellipse_24" type="shape" shapeType="ellipse" color="0x000000" radius="3.5 / 3.5" alpha="0" x="328" y="760" width="3" height="3" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc3cbce" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="path_56" type="image" src="skins/path_56.png" x="323" y="768.5" width="17" height="10.599975585938" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xc3cbce" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="icn_activity" type="image" src="skins/icn_activity.png" x="99" y="759" width="20" height="20" >
+			<effects>
+				<effect type="frameFX" lineSize="2" color="0xd97d54" alpha="255" />
+			</effects>
+		</layer>
+		<layer name="sports_logo_large" type="image" src="skins/sports_logo_large.png" x="21" y="206" width="70" height="60" />
+		<layer name="guitar" type="image" src="skins/guitar.png" x="21" y="296" width="70" height="71" />
+		<layer name="notifications_ek1" type="text" font="Rift Soft" justification="center" lineHeight="8" color="0x#d97d54" size="8" x="83" y="784" width="57" height="12" >
+			<![CDATA[notifications]]>
+		</layer>
+		<layer name="home" type="text" font="Rift Soft" justification="center" lineHeight="8" color="0x#c3cbce" size="8" x="29" y="784" width="23" height="12" >
+			<![CDATA[home]]>
+		</layer>
+		<layer name="search" type="text" font="Rift Soft" justification="center" lineHeight="8" color="0x#c3cbce" size="8" x="249" y="784" width="31" height="12" >
+			<![CDATA[search]]>
+		</layer>
+	</layers>
+</psd>
