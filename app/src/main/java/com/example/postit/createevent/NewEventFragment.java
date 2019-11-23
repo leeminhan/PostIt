@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ import java.text.ParseException;
  * create an instance of this fragment.
  */
 public class NewEventFragment extends Fragment {
+
+    private final static String TAG = "NewEventFragment";
 
     private OnCreateEventListener eventListener;
     private static final int frame = R.id.create_event_container;
@@ -55,7 +58,14 @@ public class NewEventFragment extends Fragment {
         setViewRefs();
         setEventTemplate();
         createEventButton.setOnClickListener((View v) -> {
-            Event event = gatherEventDetails();
+            Event event;
+            try {
+                event = gatherEventDetails();
+
+            } catch (Exception ex) {
+                Log.i(TAG, "User did not fill in fields properly");
+                return;
+            }
             eventListener.onCreateEvent(event);
         });
     }
@@ -103,7 +113,7 @@ public class NewEventFragment extends Fragment {
         }
     }
 
-    private Event gatherEventDetails() {
+    private Event gatherEventDetails() throws Exception {
         Event event = new Event();
         event.setCategory(eventCategoryField.getText().toString())
                 .setTitle(eventTitleField.getText().toString())
@@ -115,6 +125,7 @@ public class NewEventFragment extends Fragment {
         } catch (Exception ex) {
             eventDateField.rowField.setTextColor(Color.RED);
             Toast.makeText(getContext(), getString(R.string.invalid_date), Toast.LENGTH_SHORT).show();
+            throw ex;
         }
 
         try {
@@ -123,6 +134,7 @@ public class NewEventFragment extends Fragment {
         } catch (Exception ex) {
             eventTimeField.rowField.setTextColor(Color.RED);
             Toast.makeText(getContext(), getString(R.string.invalid_time), Toast.LENGTH_SHORT).show();
+            throw ex;
         }
 
         return event;
