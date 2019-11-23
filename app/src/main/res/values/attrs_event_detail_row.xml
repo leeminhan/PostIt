@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="EventDetailRowView">
+        <attr name="rowField" format="string"/>
+        <attr name="rowImage" format="color|reference"/>
+        <attr name="onlyNumberInput" format="boolean"/>
+    </declare-styleable>
+</resources>
