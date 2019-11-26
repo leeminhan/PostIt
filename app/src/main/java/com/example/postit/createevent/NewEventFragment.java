@@ -19,6 +19,7 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.EventCategory;
 import com.example.postit.models.EventTemplate;
+import com.example.postit.models.InvalidInputException;
 import com.example.postit.utils.UIUtils;
 
 import java.text.ParseException;
@@ -61,9 +62,11 @@ public class NewEventFragment extends Fragment {
             Event event;
             try {
                 event = gatherEventDetails();
-
-            } catch (Exception ex) {
-                Log.i(TAG, "User did not fill in fields properly");
+            } catch (InvalidInputException ex) {
+                TextView view = (TextView) ex.getView();
+                view.setTextColor(Color.RED);
+                Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Invalid Input");
                 return;
             }
             eventListener.onCreateEvent(event);
@@ -113,29 +116,15 @@ public class NewEventFragment extends Fragment {
         }
     }
 
-    private Event gatherEventDetails() throws Exception {
+    private Event gatherEventDetails() throws InvalidInputException {
         Event event = new Event();
-        event.setCategory(eventCategoryField.getText().toString())
-                .setTitle(eventTitleField.getText().toString())
-                .setLocation(eventLocationField.getText().toString())
-                .setDescrip(eventDescripField.getText().toString());
-
-        try {
-            event.setDate(eventDateField.getText().toString());
-        } catch (Exception ex) {
-            eventDateField.rowField.setTextColor(Color.RED);
-            Toast.makeText(getContext(), getString(R.string.invalid_date), Toast.LENGTH_SHORT).show();
-            throw ex;
-        }
-
-        try {
-            event.setTime(eventTimeField.getText().toString());
-
-        } catch (Exception ex) {
-            eventTimeField.rowField.setTextColor(Color.RED);
-            Toast.makeText(getContext(), getString(R.string.invalid_time), Toast.LENGTH_SHORT).show();
-            throw ex;
-        }
+        event.setCategory(new Event.ByViewSetter(eventCategoryField))
+                .setTitle(new Event.ByViewSetter(eventTitleField))
+                .setLocation(new Event.ByViewSetter(eventLocationField))
+                .setDate(new Event.ByViewSetter(eventDateField))
+                .setTime(new Event.ByViewSetter(eventTimeField))
+                .setDescrip(new Event.ByViewSetter(eventDescripField))
+                .setMaxPpl(new Event.ByViewSetter(eventMaxPplField));
 
         return event;
     }

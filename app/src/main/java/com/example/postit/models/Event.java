@@ -1,8 +1,13 @@
 package com.example.postit.models;
 
+import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.example.postit.createevent.EventDetailRowView;
+import com.example.postit.utils.GenUtils;
+import org.w3c.dom.Text;
 
-import java.net.URI;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,7 +27,7 @@ public class Event {
     private Integer maxPpl;
     private String descrip;
 
-    private URI imagePath;
+    private Uri imagePath;
 
     public Event() { }
 
@@ -52,6 +57,10 @@ public class Event {
         return this;
     }
 
+    public Event setTitle(InputSetter s) {
+        return setTitle(s.getInput());
+    }
+
     public String getCategory() {
         return category;
     }
@@ -59,6 +68,10 @@ public class Event {
     public Event setCategory(String category) {
         this.category = category;
         return this;
+    }
+
+    public Event setCategory(InputSetter s) {
+        return setCategory(s.getInput());
     }
 
     public String getDate() {
@@ -71,21 +84,36 @@ public class Event {
     }
 
     public Event setDate(String date) throws ParseException {
-        this.date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        return this;
+        return setDate(GenUtils.getValidDate(date, GenUtils.DateFormat.STANDARD));
+    }
+
+    public Event setDate(InputSetter s) throws InvalidInputException {
+        try {
+            return setDate(s.getInput());
+        } catch (ParseException ex) {
+            throw new InvalidInputException(s, null);
+        }
     }
 
     public String getTime() {
         return time.toString();
     }
 
-    public void setTime(Time time) {
+    public Event setTime(Time time) {
         this.time = time;
+        return this;
     }
 
     public Event setTime(String time) throws ParseException {
-        this.time = new Time(new SimpleDateFormat("HH:mm").parse(time).getTime());
-        return this;
+        return setTime(GenUtils.getValidTime(time, GenUtils.TimeFormat.STANDARD));
+    }
+
+    public Event setTime(InputSetter s) throws InvalidInputException {
+        try {
+            return setTime(s.getInput());
+        } catch (ParseException ex) {
+            throw new InvalidInputException(s, null);
+        }
     }
 
     public String getLocation() {
@@ -97,6 +125,10 @@ public class Event {
         return this;
     }
 
+    public Event setLocation(InputSetter s) {
+        return setLocation(s.getInput());
+    }
+
     public int getPpl() {
         return ppl;
     }
@@ -106,8 +138,32 @@ public class Event {
         return this;
     }
 
+    public Event setPpl(String ppl) throws NumberFormatException {
+        return setPpl(Integer.parseInt(ppl));
+    }
+
+    public Event setPpl(InputSetter s) throws InvalidInputException {
+        try {
+            return setPpl(s.getInput());
+        } catch (NumberFormatException ex) {
+            throw new InvalidInputException(s, null);
+        }
+    }
+
     public int getMaxPpl() {
         return maxPpl;
+    }
+
+    public Event setMaxPpl(String maxPplStr) throws NumberFormatException {
+        return setMaxPpl(Integer.parseInt(maxPplStr));
+    }
+
+    public Event setMaxPpl(InputSetter s) throws InvalidInputException {
+        try {
+            return setMaxPpl(s.getInput());
+        } catch (NumberFormatException ex) {
+            throw new InvalidInputException(s, null);
+        }
     }
 
     public Event setMaxPpl(int maxPpl) {
@@ -124,14 +180,66 @@ public class Event {
         return this;
     }
 
-    public URI getImagePath() {
+    public Event setDescrip(InputSetter s) {
+        return setDescrip(s.getInput());
+    }
+
+    public Uri getImagePath() {
         return imagePath;
     }
 
-    public Event setImagePath(URI imagePath) {
+    public Event setImagePath(Uri imagePath) {
         this.imagePath = imagePath;
         return this;
     }
 
+    public Event setImagePath(String imagePathStr) throws NullPointerException {
+        return setImagePath(Uri.parse(imagePathStr));
+    }
+
+    public Event setImagePath(InputSetter s) throws InvalidInputException {
+        try {
+            return setImagePath(s.getInput());
+        } catch (NullPointerException ex) {
+            throw new InvalidInputException(s, null);
+        }
+    }
+
+    public static class ByViewSetter implements InputSetter {
+
+        public static final String VIEW_KEY = "view_key";
+        private EditText editText;
+
+        public ByViewSetter(EditText v) {
+            editText = v;
+        }
+
+        public ByViewSetter(EventDetailRowView v) {
+            this(v.rowField);
+        }
+
+        @Override
+        public String getInput() {
+            return editText.getText().toString();
+        }
+
+        @Override
+        public String getErrorCause() {
+            return editText.getHint().toString();
+        }
+
+        @Override
+        public Map<String, Object> getExtra() {
+            Map<String, Object> extra = new HashMap<String, Object>();
+            extra.put(VIEW_KEY, editText);
+
+            return extra;
+        }
+
+        @Override
+        public String getViewKey() {
+            return VIEW_KEY;
+        }
+    }
 
 }
