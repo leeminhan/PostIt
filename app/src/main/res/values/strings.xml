@@ -10,4 +10,33 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+
+    <string name="title_create_event">Choose a Category</string>
+    <string name="category_sports">Sports</string>
+    <string name="category_board_games">Board Games</string>
+    <string name="category_eat">Eat</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_clubbing">Clubbing</string>
+    <string name="category_others">Others</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <string name="image_card_view_default_text">Example</string>
+    <string name="prompt_default">Placeholder</string>
+    <string name="title_hint">Event Title</string>
+    <string name="category_hint">Category</string>
+    <string name="date_hint">Date DD/MM/YYYY</string>
+    <string name="time_hint">Time HH:MM</string>
+    <string name="location_hint">Meet-up Location</string>
+    <string name="descrip_hint">Event Description</string>
+    <string name="attendees_hint">Max Attendees (Optional)</string>
+    <string name="image_change_text">Click on the image to change it</string>
+
+    <string name="save_event_button">Create &amp; Publish Event</string>
+    <string name="invalid_date">Invalid Date</string>
+    <string name="invalid_time">Invalid Time</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
