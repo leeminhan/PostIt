@@ -8,5 +8,5 @@ public interface InputSetter {
     String getInput();
     String getErrorCause();
     Map<String, Object> getExtra();
-    String getViewKey();
+    String getCauseKey();
 }

@@ -1,13 +1,9 @@
 package com.example.postit.createevent;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +17,6 @@ import com.example.postit.models.EventCategory;
 import com.example.postit.models.EventTemplate;
 import com.example.postit.models.InvalidInputException;
 import com.example.postit.utils.UIUtils;
-
-import java.text.ParseException;
 
 
 /**
@@ -63,7 +57,7 @@ public class NewEventFragment extends Fragment {
             try {
                 event = gatherEventDetails();
             } catch (InvalidInputException ex) {
-                TextView view = (TextView) ex.getView();
+                TextView view = (TextView) ex.getCauseObject();
                 view.setTextColor(Color.RED);
                 Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.i(TAG, "Invalid Input");

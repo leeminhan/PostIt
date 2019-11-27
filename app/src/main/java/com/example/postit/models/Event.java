@@ -3,10 +3,8 @@ package com.example.postit.models;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
-import android.widget.TextView;
 import com.example.postit.createevent.EventDetailRowView;
 import com.example.postit.utils.GenUtils;
-import org.w3c.dom.Text;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -29,7 +27,8 @@ public class Event {
 
     private Uri imagePath;
 
-    public Event() { }
+    public Event() {
+    }
 
     public Map toMap() {
         HashMap<String, String> map = new HashMap<String, String>();
@@ -45,6 +44,7 @@ public class Event {
     }
 
     public Event(String title) {
+        this();
         this.title = title;
     }
 
@@ -237,7 +237,7 @@ public class Event {
         }
 
         @Override
-        public String getViewKey() {
+        public String getCauseKey() {
             return VIEW_KEY;
         }
     }

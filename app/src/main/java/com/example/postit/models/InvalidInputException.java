@@ -1,8 +1,6 @@
 package com.example.postit.models;
 
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.View;
 
 import java.util.Map;
 
@@ -20,9 +18,9 @@ public class InvalidInputException extends Exception {
         this.s = s;
     }
 
-    public View getView() {
+    public Object getCauseObject() {
         try {
-            return (View) extra.get(s.getViewKey());
+            return extra.get(s.getCauseKey());
         } catch (ClassCastException ex) {
             return null;
         }
