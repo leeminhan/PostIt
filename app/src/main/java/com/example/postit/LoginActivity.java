@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.postit.createevent.CreateEventActivity;
+import com.example.postit.eventlisting.ViewEvents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        Intent intent = new Intent(this, CreateEventActivity.class);
+        Intent intent = new Intent(this, ViewEvents.class);
         startActivity(intent);
 
     }

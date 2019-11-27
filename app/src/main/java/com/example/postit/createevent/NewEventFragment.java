@@ -1,13 +1,10 @@
 package com.example.postit.createevent;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +15,8 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.EventCategory;
 import com.example.postit.models.EventTemplate;
+import com.example.postit.models.InvalidInputException;
 import com.example.postit.utils.UIUtils;
-
-import java.text.ParseException;
 
 
 /**
@@ -30,6 +26,8 @@ import java.text.ParseException;
  * create an instance of this fragment.
  */
 public class NewEventFragment extends Fragment {
+
+    private final static String TAG = "NewEventFragment";
 
     private OnCreateEventListener eventListener;
     private static final int frame = R.id.create_event_container;
@@ -55,7 +53,16 @@ public class NewEventFragment extends Fragment {
         setViewRefs();
         setEventTemplate();
         createEventButton.setOnClickListener((View v) -> {
-            Event event = gatherEventDetails();
+            Event event;
+            try {
+                event = gatherEventDetails();
+            } catch (InvalidInputException ex) {
+                TextView view = (TextView) ex.getCauseObject();
+                view.setTextColor(Color.RED);
+                Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i(TAG, "Invalid Input");
+                return;
+            }
             eventListener.onCreateEvent(event);
         });
     }
@@ -103,27 +110,15 @@ public class NewEventFragment extends Fragment {
         }
     }
 
-    private Event gatherEventDetails() {
+    private Event gatherEventDetails() throws InvalidInputException {
         Event event = new Event();
-        event.setCategory(eventCategoryField.getText().toString())
-                .setTitle(eventTitleField.getText().toString())
-                .setLocation(eventLocationField.getText().toString())
-                .setDescrip(eventDescripField.getText().toString());
-
-        try {
-            event.setDate(eventDateField.getText().toString());
-        } catch (Exception ex) {
-            eventDateField.rowField.setTextColor(Color.RED);
-            Toast.makeText(getContext(), getString(R.string.invalid_date), Toast.LENGTH_SHORT).show();
-        }
-
-        try {
-            event.setTime(eventTimeField.getText().toString());
-
-        } catch (Exception ex) {
-            eventTimeField.rowField.setTextColor(Color.RED);
-            Toast.makeText(getContext(), getString(R.string.invalid_time), Toast.LENGTH_SHORT).show();
-        }
+        event.setCategory(new Event.ByViewSetter(eventCategoryField))
+                .setTitle(new Event.ByViewSetter(eventTitleField))
+                .setLocation(new Event.ByViewSetter(eventLocationField))
+                .setDate(new Event.ByViewSetter(eventDateField))
+                .setTime(new Event.ByViewSetter(eventTimeField))
+                .setDescrip(new Event.ByViewSetter(eventDescripField))
+                .setMaxPpl(new Event.ByViewSetter(eventMaxPplField));
 
         return event;
     }
