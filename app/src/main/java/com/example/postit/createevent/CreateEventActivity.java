@@ -1,22 +1,17 @@
 package com.example.postit.createevent;
 
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.postit.R;
 import com.example.postit.models.Event;
-import com.example.postit.models.EventTemplate;
 import com.example.postit.utils.ReqUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

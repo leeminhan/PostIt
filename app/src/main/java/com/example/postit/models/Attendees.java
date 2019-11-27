@@ -1,8 +1,7 @@
 package com.example.postit.models;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 

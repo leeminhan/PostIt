@@ -1,14 +1,13 @@
 package com.example.postit.models;
 
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.EditText;
 import com.example.postit.createevent.EventDetailRowView;
 import com.example.postit.utils.GenUtils;
 
 import java.sql.Time;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
