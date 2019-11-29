@@ -6,7 +6,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".eventlisting.ViewEvents">
+        tools:context=".eventlisting.ViewEventsActivity">
 
     <TextView
             android:id="@+id/message"
@@ -15,12 +15,12 @@
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/title_home"
+            android:text="@string/title_view_events"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
+            android:id="@+id/navbar_view_events"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="0dp"

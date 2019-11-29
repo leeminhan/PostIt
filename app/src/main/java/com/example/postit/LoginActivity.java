@@ -20,17 +20,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.example.postit.createevent.CreateEventActivity;
-import com.example.postit.eventlisting.ViewEvents;
+import com.example.postit.eventlisting.ViewEventsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        Intent intent = new Intent(this, ViewEvents.class);
+        Intent intent = new Intent(this, ViewEventsActivity.class);
         startActivity(intent);
 
     }
