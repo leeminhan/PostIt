@@ -2,6 +2,7 @@ package com.example.postit.createevent;
 
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,15 +18,19 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.EventTemplate;
+import com.example.postit.utils.BottomNavMenu;
 import com.example.postit.utils.ReqUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.json.JSONObject;
 
-public class CreateEventActivity extends AppCompatActivity implements NewEventFragment.OnCreateEventListener {
+public class CreateEventActivity extends AppCompatActivity implements NewEventFragment.OnCreateEventListener,
+    BottomNavMenu.NavActivity {
 
     private static final String TAG = "CreateEventActivity";
+    private BottomNavigationView navigation;
+    private BottomNavMenu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,9 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
         transaction.add(R.id.create_event_container, fragment);
         transaction.addToBackStack("chooseCategoryFragment");
         transaction.commit();
+
+        navigation = findViewById(R.id.navbar_create_event);
+        menu = new BottomNavMenu(this, navigation);
     }
 
     @Override
@@ -80,6 +88,11 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
         });
         ReqUtil.getInstance(this).addToRequestQueue(req);
 
+        finish();
+    }
+
+    @Override
+    public void exit() {
         finish();
     }
 }
