@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
 import android.view.MenuItem;
@@ -25,6 +27,13 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
 
         navigation = (BottomNavigationView) findViewById(R.id.navbar_view_events);
         menu = new BottomNavMenu(this, navigation);
+
+        Fragment fragment = new EventListFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.view_events_container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

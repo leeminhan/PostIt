@@ -1,5 +1,8 @@
 package com.example.postit.models;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
@@ -26,6 +29,7 @@ public class Event {
     private String descrip;
 
     private Uri imagePath;
+    private Bitmap bitmap;
 
     public Event() {
     }
@@ -203,6 +207,16 @@ public class Event {
         } catch (NullPointerException ex) {
             throw new InvalidInputException(s, null);
         }
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public Bitmap setBitmap(Context context, int id) {
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
+        this.bitmap = bitmap;
+        return bitmap;
     }
 
     public static class ByViewSetter implements InputSetter {
