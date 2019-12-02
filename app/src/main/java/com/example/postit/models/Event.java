@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.EditText;
 import com.example.postit.createevent.EventDetailRowView;
 import com.example.postit.utils.GenUtils;
@@ -80,6 +81,15 @@ public class Event {
 
     public String getDate() {
         return date.toString();
+    }
+
+    public String getShortDate() {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
+            return dateFormat.format(dateFormat.parse(date.toString()));
+        } catch (ParseException ex) {
+            return "09/11";
+        }
     }
 
     public Event setDate(Date date) {

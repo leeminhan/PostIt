@@ -43,7 +43,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     public void onBindViewHolder(@NonNull EventListViewHolder eventListViewHolder, int i) {
         eventListViewHolder.image.setImageBitmap(events[i].getBitmap());
         eventListViewHolder.title.setText(events[i].getTitle());
-        String timeText = String.format("%s %s", events[i].getDate(), events[i].getTime());
+        String timeText = String.format("%s %s", events[i].getShortDate(), events[i].getTime());
         eventListViewHolder.time.setText(timeText);
     }
 

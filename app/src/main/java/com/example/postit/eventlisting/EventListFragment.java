@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.postit.FirebaseStorageController;
 import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.FragmentTransition;
@@ -21,6 +22,7 @@ import java.text.ParseException;
 
 public class EventListFragment extends Fragment implements FragmentTransition {
     private static final int frame = R.id.view_events_container;
+    private final int LINEAR_SPACING = 36;
     private RecyclerView sportsRecycler;
     private RecyclerView gamesRecycler;
     private RecyclerView eatingRecycler;
@@ -46,8 +48,6 @@ public class EventListFragment extends Fragment implements FragmentTransition {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
-        final int LINEAR_SPACING = 48;
 
         super.onActivityCreated(savedInstanceState);
 
@@ -89,7 +89,12 @@ public class EventListFragment extends Fragment implements FragmentTransition {
         eatingRecycler = getView().findViewById(R.id.recycler_eating_list);
         clubbingRecycler = getView().findViewById(R.id.recycler_clubbing_list);
         shoppingRecycler = getView().findViewById(R.id.recycler_shopping_list);
+
         sportsRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+        gamesRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+        eatingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+        clubbingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+        shoppingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
 
         sportsAdapter = new EventListAdapter(events);
         gamesAdapter = new EventListAdapter(events);
