@@ -1,13 +1,12 @@
 package com.example.postit.utils;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.support.design.widget.BottomNavigationView;
-import android.transition.Fade;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
+
 import com.example.postit.R;
 import com.example.postit.createevent.CreateEventActivity;
 import com.example.postit.eventlisting.ViewEventsActivity;

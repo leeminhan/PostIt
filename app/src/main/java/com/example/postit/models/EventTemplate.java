@@ -2,7 +2,7 @@ package com.example.postit.models;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import com.example.postit.App;
 import com.example.postit.R;
