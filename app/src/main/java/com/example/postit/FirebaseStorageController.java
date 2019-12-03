@@ -1,14 +1,11 @@
 package com.example.postit;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.android.gms.tasks.Task;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 public class FirebaseStorageController {
@@ -25,25 +22,25 @@ public class FirebaseStorageController {
     }
 
     public interface UploadImageListener {
-        void onSuccess();
+        void onSuccess(Uri uploadedImgUrl);
         void onError(String err);
     }
 
-    public static void uploadImage(String imagePath, String eventName, UploadImageListener listener) {
-        Uri file = Uri.fromFile(new File(imagePath));
+    public static void uploadImage(Uri imagePath, String eventName, UploadImageListener listener) {
         StorageReference bitmapRef = getEventStorageRef().child(String.format("%s.jpg", eventName));
-        UploadTask uploadTask = bitmapRef.putFile(file);
+        UploadTask uploadTask = bitmapRef.putFile(imagePath);
 
         uploadTask.addOnFailureListener((Exception ex) -> {
             listener.onError(ex.getMessage());
         }).addOnSuccessListener((UploadTask.TaskSnapshot taskSnapshot) -> {
-            listener.onSuccess();
+            uploadTask.continueWithTask((Task<UploadTask.TaskSnapshot> task) -> bitmapRef.getDownloadUrl())
+                    .addOnCompleteListener((Task<Uri> task) -> listener.onSuccess(task.getResult()));
         });
     }
 
     private static StorageReference getStorageReference() {
         if (storageReference == null) {
-            storageReference = firebaseStorage.getReference();
+            storageReference = getFirebaseStorage().getReference();
         }
         return storageReference;
     }

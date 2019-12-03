@@ -1,8 +1,10 @@
 package com.example.postit.eventlisting;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,12 +20,14 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         public ImageView image;
         public TextView title;
         public TextView time;
+        public CardView card;
 
         public EventListViewHolder(CardView v) {
             super(v);
             image = v.findViewById(R.id.event_card_image);
             title = v.findViewById(R.id.event_card_title);
             time = v.findViewById(R.id.event_card_time);
+            card = v.findViewById(R.id.event_card_view);
         }
     }
 
@@ -43,8 +47,12 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     public void onBindViewHolder(@NonNull EventListViewHolder eventListViewHolder, int i) {
         eventListViewHolder.image.setImageBitmap(events[i].getBitmap());
         eventListViewHolder.title.setText(events[i].getTitle());
-        String timeText = String.format("%s %s", events[i].getShortDate(), events[i].getTime());
+        String timeText = String.format("%s %s", events[i].getShortDate(), events[i].getShortTime());
         eventListViewHolder.time.setText(timeText);
+        eventListViewHolder.card.setOnClickListener((View v) -> {
+            // TODO: replace with Aobos create event function
+            Toast.makeText(eventListViewHolder.card.getContext(), events[i].getTitle(), Toast.LENGTH_LONG).show();
+        });
     }
 
     @Override

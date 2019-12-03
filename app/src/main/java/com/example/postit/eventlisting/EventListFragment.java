@@ -1,18 +1,15 @@
 package com.example.postit.eventlisting;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.postit.FirebaseStorageController;
 import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.FragmentTransition;
@@ -57,7 +54,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
             event.setTitle("testing")
                     .setDate("12/12/2019")
                     .setTime("12:12")
-                    .setBitmap(getContext(), R.drawable.sport);
+                    .setBitmap(getContext(), R.drawable.football);
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -77,7 +74,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
             event3.setTitle("testing2")
                     .setDate("12/12/2219")
                     .setTime("12:12")
-                    .setBitmap(getContext(), R.drawable.sport);
+                    .setBitmap(getContext(), R.drawable.football);
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -90,11 +87,11 @@ public class EventListFragment extends Fragment implements FragmentTransition {
         clubbingRecycler = getView().findViewById(R.id.recycler_clubbing_list);
         shoppingRecycler = getView().findViewById(R.id.recycler_shopping_list);
 
-        sportsRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
-        gamesRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
-        eatingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
-        clubbingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
-        shoppingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+//        sportsRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+//        gamesRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+//        eatingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+//        clubbingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
+//        shoppingRecycler.addItemDecoration(new HoriztontalSpaceItemDecoration(LINEAR_SPACING));
 
         sportsAdapter = new EventListAdapter(events);
         gamesAdapter = new EventListAdapter(events);

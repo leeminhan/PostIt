@@ -2,7 +2,7 @@ package com.example.postit.models;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import com.example.postit.App;
 import com.example.postit.R;
@@ -49,14 +49,15 @@ public class EventTemplate extends Event {
         }
     }
 
-    public EventTemplate(String defaultCategory,
+    public EventTemplate(Context context,
+                         String defaultCategory,
                          String defaultTitle,
                          String defaultDateStr,
                          String defaultTimeStr,
                          String defaultLocation,
                          String defaultMaxPpl,
                          String defaultDescrip,
-                         String defaultImagePathStr) {
+                         int defaultDrawableId) {
 
         setDefaultCategory(defaultCategory);
         setDefaultTitle(defaultTitle);
@@ -65,80 +66,85 @@ public class EventTemplate extends Event {
         setDefaultLocation(defaultLocation);
         setDefaultMaxPpl(defaultMaxPpl);
         setDefaultDescrip(defaultDescrip);
-        setDefaultImagePath(defaultImagePathStr);
-
+        setDefaultImagePath(context, defaultDrawableId);
     }
 
     public static EventTemplate emptyEvent() {
-
-        return new EventTemplate("",
+        final Context context = App.getContext();
+        return new EventTemplate(context,
+                "",
                 "",
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
                 "",
                 "",
                 "",
-                "");
+                R.drawable.sutd_logo);
     }
 
     public static EventTemplate sportsEvent() {
         final Context context = App.getContext();
-        return new EventTemplate(context.getString(R.string.event_sports_default_category),
+        return new EventTemplate(context,
+                                context.getString(R.string.event_sports_default_category),
                                 context.getString(R.string.event_sports_default_title),
                                 getCurrentDateStr(),
                                 getCurrentTimeStr(),
                                 context.getString(R.string.event_sports_default_location),
                                 "",
                                 "",
-                                context.getString(R.string.event_sports_default_image_path));
+                                R.drawable.sutd_logo);
     }
 
     public static EventTemplate gamesEvent() {
         final Context context = App.getContext();
-        return new EventTemplate(context.getString(R.string.event_games_default_category),
+        return new EventTemplate(context,
+                context.getString(R.string.event_games_default_category),
                 context.getString(R.string.event_games_default_title),
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
                 context.getString(R.string.event_games_default_location),
                 "",
                 "",
-                context.getString(R.string.event_eating_default_image_path));
+                R.drawable.sutd_logo);
     }
 
     public static EventTemplate eatingEvent() {
         final Context context = App.getContext();
-        return new EventTemplate(context.getString(R.string.event_eating_default_category),
+        return new EventTemplate(context,
+                context.getString(R.string.event_eating_default_category),
                 context.getString(R.string.event_eating_default_title),
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
                 context.getString(R.string.event_eating_default_location),
                 "",
                 context.getString(R.string.event_eating_default_descrip),
-                context.getString(R.string.event_eating_default_image_path));
+                R.drawable.sutd_logo);
     }
 
     public static EventTemplate clubbingEvent() {
         final Context context = App.getContext();
-        return new EventTemplate(context.getString(R.string.event_clubbing_default_category),
+        return new EventTemplate(context,
+                context.getString(R.string.event_clubbing_default_category),
                 context.getString(R.string.event_clubbing_default_title),
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
                 context.getString(R.string.event_clubbing_default_location),
                 "",
                 context.getString(R.string.event_clubbing_default_descrip),
-                context.getString(R.string.event_eating_default_image_path));
+                R.drawable.sutd_logo);
     }
 
     public static EventTemplate shoppingEvent() {
         final Context context = App.getContext();
-        return new EventTemplate(context.getString(R.string.event_shopping_default_category),
+        return new EventTemplate(context,
+                context.getString(R.string.event_shopping_default_category),
                 context.getString(R.string.event_shopping_default_title),
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
                 context.getString(R.string.event_shopping_default_location),
                 "",
                 "",
-                context.getString(R.string.event_eating_default_image_path));
+                R.drawable.sutd_logo);
     }
 
     private static String getCurrentDateStr() {
@@ -232,6 +238,10 @@ public class EventTemplate extends Event {
             ex.printStackTrace();
             this.defaultImagePath = Uri.parse("");
         }
+    }
+
+    public void setDefaultImagePath(Context context, int drawableId) {
+        setImagePath(context, drawableId);
     }
 
 
