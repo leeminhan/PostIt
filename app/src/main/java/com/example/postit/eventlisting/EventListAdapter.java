@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.postit.R;
 import com.example.postit.models.Event;
+import com.squareup.picasso.Picasso;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventListViewHolder> {
 
@@ -45,7 +46,11 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
 
     @Override
     public void onBindViewHolder(@NonNull EventListViewHolder eventListViewHolder, int i) {
-        eventListViewHolder.image.setImageBitmap(events[i].getBitmap());
+        if (events[i].getBitmap() != null) {
+            eventListViewHolder.image.setImageBitmap(events[i].getBitmap());
+        } else {
+            Picasso.get().load(events[i].getWebImgUrl()).into(eventListViewHolder.image);
+        }
         eventListViewHolder.title.setText(events[i].getTitle());
         String timeText = String.format("%s %s", events[i].getShortDate(), events[i].getShortTime());
         eventListViewHolder.time.setText(timeText);

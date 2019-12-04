@@ -238,8 +238,13 @@ public class Event {
         return webImgUrl;
     }
 
-    public void setWebImgUrl(Uri webImgUrl) {
+    public Event setWebImgUrl(Uri webImgUrl) {
         this.webImgUrl = webImgUrl;
+        return this;
+    }
+
+    public Event setWebImgUrl(String webImgUrlStr) {
+        return setWebImgUrl(Uri.parse(webImgUrlStr));
     }
 
 

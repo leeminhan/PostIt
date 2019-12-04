@@ -14,6 +14,7 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.FragmentTransition;
 import com.example.postit.models.HoriztontalSpaceItemDecoration;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 
@@ -54,7 +55,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
             event.setTitle("testing")
                     .setDate("12/12/2019")
                     .setTime("12:12")
-                    .setBitmap(getContext(), R.drawable.football);
+                    .setWebImgUrl("https://static.toiimg.com/photo/64697339.cms");
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -64,7 +65,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
             event2.setTitle("testing2")
                     .setDate("12/12/2219")
                     .setTime("12:12")
-                    .setBitmap(getContext(), R.drawable.sport);
+                    .setWebImgUrl("https://images.theconversation.com/files/279768/original/file-20190617-118505-9ov3gw.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip");
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -74,7 +75,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
             event3.setTitle("testing2")
                     .setDate("12/12/2219")
                     .setTime("12:12")
-                    .setBitmap(getContext(), R.drawable.football);
+                    .setWebImgUrl("http://danielfooddiary.com/wp-content/uploads/2019/02/mynonna2.jpg");
         } catch (ParseException ex) {
             ex.printStackTrace();
         }
@@ -117,4 +118,5 @@ public class EventListFragment extends Fragment implements FragmentTransition {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
     }
+
 }
