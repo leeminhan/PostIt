@@ -1,12 +1,7 @@
 package com.example.postit.createevent;
 
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
@@ -21,11 +16,7 @@ import com.example.postit.models.Event;
 import com.example.postit.models.EventCategory;
 import com.example.postit.models.EventTemplate;
 import com.example.postit.models.InvalidInputException;
-import com.example.postit.utils.GenUtils;
 import com.example.postit.utils.UIUtils;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 
 /**
@@ -39,8 +30,7 @@ public class NewEventFragment extends Fragment {
     private final static String TAG = "NewEventFragment";
 
     private OnCreateEventListener eventListener;
-    private ImageView imageView;
-    private Bitmap bitmap;
+    private static final int frame = R.id.create_event_container;
     private EditText eventTitleField;
     private EventDetailRowView eventCategoryField;
     private EventDetailRowView eventDateField;
@@ -49,7 +39,6 @@ public class NewEventFragment extends Fragment {
     private EventDetailRowView eventDescripField;
     private EventDetailRowView eventMaxPplField;
     private TextView createEventButton;
-    private Uri imagePath;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,10 +65,6 @@ public class NewEventFragment extends Fragment {
             }
             eventListener.onCreateEvent(event);
         });
-
-        imageView.setOnClickListener((View v) -> {
-            GenUtils.chooseImage(getActivity());
-        });
     }
 
     public interface OnCreateEventListener {
@@ -99,7 +84,6 @@ public class NewEventFragment extends Fragment {
         eventDescripField = getView().findViewById(R.id.event_descrip_field);
         eventMaxPplField = getView().findViewById(R.id.event_max_ppl_field);
         createEventButton = getView().findViewById(R.id.create_event_button);
-        imageView = getView().findViewById(R.id.new_event_image);
     }
 
     private void setEventTemplate() {
@@ -112,15 +96,13 @@ public class NewEventFragment extends Fragment {
         }
 
         EventTemplate template = EventTemplate.createEventTemplate(category);
+
         eventTitleField.setText(template.getDefaultTitle());
         eventCategoryField.setText(template.getDefaultCategory());
         eventDateField.setText(template.getDefaultDate());
         eventTimeField.setText(template.getDefaultTime());
         eventLocationField.setText(template.getDefaultLocation());
         eventDescripField.setText(template.getDefaultDescrip());
-
-        imagePath = template.getImagePath();
-
         if (template.getDefaultMaxPpl() >= 0) eventMaxPplField.setText(template.getDefaultMaxPpl());
 
         if (category != null) {
@@ -136,21 +118,9 @@ public class NewEventFragment extends Fragment {
                 .setDate(new Event.ByViewSetter(eventDateField))
                 .setTime(new Event.ByViewSetter(eventTimeField))
                 .setDescrip(new Event.ByViewSetter(eventDescripField))
-                .setMaxPpl(new Event.ByViewSetter(eventMaxPplField))
-                .setImagePath(imagePath);
+                .setMaxPpl(new Event.ByViewSetter(eventMaxPplField));
 
         return event;
-    }
-
-
-    public void setBitmap(Uri filePath) {
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), filePath);
-            imageView.setImageBitmap(bitmap);
-            imagePath = filePath;
-        } catch (IOException ex) {
-            Log.e(TAG, ex.getMessage());
-        }
     }
 
 }

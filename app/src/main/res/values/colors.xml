@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f7f7f7</color>
-    <color name="colorPrimaryDark">#00733d</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorBackground1">#FFFFFF</color>
-    <color name="colorCreateEventButton">#a6a6a6</color>
+    <color name="colorBackground1">#94ffa9</color>
+    <color name="colorCreateEventButton">#2b2b2b</color>
     <color name="colorCreateEventButtonText">#009c46</color>
-    <color name="colorEventListSubtitle">#878787</color>
 </resources>

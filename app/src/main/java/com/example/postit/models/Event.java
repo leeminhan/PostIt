@@ -1,17 +1,13 @@
 package com.example.postit.models;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import androidx.annotation.Nullable;
 import android.widget.EditText;
-import com.example.postit.R;
 import com.example.postit.createevent.EventDetailRowView;
 import com.example.postit.utils.GenUtils;
 
 import java.sql.Time;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +24,7 @@ public class Event {
     private Integer maxPpl;
     private String descrip;
 
-    private int drawableId;
     private Uri imagePath;
-    private Bitmap bitmap;
-
-    private Uri webImgUrl;
 
     public Event() {
     }
@@ -46,7 +38,7 @@ public class Event {
         map.put("location", getLocation());
         map.put("max_ppl", String.valueOf(getPpl()));
         map.put("descrip", getDescrip());
-        map.put("image_url", getWebImgUrl().toString());
+
         return map;
     }
 
@@ -85,15 +77,6 @@ public class Event {
         return date.toString();
     }
 
-    public String getShortDate() {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
-            return dateFormat.format(dateFormat.parse(date.toString()));
-        } catch (ParseException ex) {
-            return "09/11";
-        }
-    }
-
     public Event setDate(Date date) {
         this.date = date;
         return this;
@@ -113,12 +96,6 @@ public class Event {
 
     public String getTime() {
         return time.toString();
-    }
-
-    public String getShortTime() {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        return timeFormat.format(time);
-
     }
 
     public Event setTime(Time time) {
@@ -182,7 +159,6 @@ public class Event {
 
     public Event setMaxPpl(InputSetter s) throws InvalidInputException {
         try {
-            if (s.getInput() == null || s.equals("")) return setMaxPpl(-1);
             return setMaxPpl(s.getInput());
         } catch (NumberFormatException ex) {
             throw new InvalidInputException(s, null);
@@ -220,49 +196,12 @@ public class Event {
         return setImagePath(Uri.parse(imagePathStr));
     }
 
-    public Event setImagePath(Context context, int drawableId) {
-        setDrawableId(drawableId);
-        setBitmap(BitmapFactory.decodeResource(context.getResources(), drawableId));
-        return setImagePath(GenUtils.getUriToDrawable(context, drawableId));
-    }
-
     public Event setImagePath(InputSetter s) throws InvalidInputException {
         try {
             return setImagePath(s.getInput());
         } catch (NullPointerException ex) {
             throw new InvalidInputException(s, null);
         }
-    }
-
-    public Uri getWebImgUrl() {
-        return webImgUrl;
-    }
-
-    public void setWebImgUrl(Uri webImgUrl) {
-        this.webImgUrl = webImgUrl;
-    }
-
-
-    public int getDrawableId() {
-        return drawableId;
-    }
-
-    public void setDrawableId(int drawableId) {
-        this.drawableId = drawableId;
-    }
-
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public Bitmap setBitmap(Context context, int id) {
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), id);
-        return setBitmap(bitmap);
-    }
-
-    public Bitmap setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-        return this.bitmap;
     }
 
     public static class ByViewSetter implements InputSetter {

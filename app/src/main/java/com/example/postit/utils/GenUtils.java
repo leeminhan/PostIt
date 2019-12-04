@@ -1,13 +1,5 @@
 package com.example.postit.utils;
 
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import androidx.annotation.AnyRes;
-import androidx.annotation.NonNull;
-
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +8,6 @@ import java.util.Date;
 public class GenUtils {
     public enum DateFormat { STANDARD }
     public enum TimeFormat { STANDARD }
-    public static final int PICK_IMAGE_REQUEST = 100;
 
     public static Date getValidDate(String date, DateFormat df) throws ParseException {
         switch (df) {
@@ -43,22 +34,6 @@ public class GenUtils {
             default:
                 throw new ParseException("Invalid Time", 0);
         }
-    }
-
-    public static void chooseImage(Activity activity) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        activity.startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
-    }
-
-    public static final Uri getUriToDrawable(@NonNull Context context,
-                                             @AnyRes int drawableId) {
-        Uri imageUri = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
-                "://" + context.getResources().getResourcePackageName(drawableId)
-                + '/' + context.getResources().getResourceTypeName(drawableId)
-                + '/' + context.getResources().getResourceEntryName(drawableId) );
-        return imageUri;
     }
 
 }

@@ -8,6 +8,22 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:orientation="vertical">
 
+        <RelativeLayout
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/title_padding">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_create_event"
+                    android:textSize="@dimen/activity_title_size"
+                    android:textColor="@android:color/black"
+                    android:layout_centerInParent="true"
+            >
+
+            </TextView>
+        </RelativeLayout>
         <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -22,7 +38,6 @@
                     android:id="@+id/sports_card"
                     app:cardString="Sports"
                     app:cardDrawable="@drawable/ic_sports_football_24px"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -36,7 +51,6 @@
                     android:id="@+id/games_card"
                     app:cardString="Games"
                     app:cardDrawable="@drawable/ic_videogame_asset_24px"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -50,7 +64,6 @@
                     android:id="@+id/eating_card"
                     app:cardString="Eating"
                     app:cardDrawable="@drawable/ic_fastfood_24px"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -64,7 +77,6 @@
                     android:id="@+id/clubbing_card"
                     app:cardString="Clubbing"
                     app:cardDrawable="@drawable/ic_local_bar_24px"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -78,7 +90,6 @@
                     android:id="@+id/shopping_card"
                     app:cardString="Shopping"
                     app:cardDrawable="@drawable/ic_shopping_cart_24px"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -92,7 +103,6 @@
                     android:id="@+id/others_card"
                     app:cardString="Others"
                     app:cardDrawable="@drawable/ic_cal_24"
-                    app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"

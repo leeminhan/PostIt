@@ -1,10 +1,5 @@
 package com.example.postit.createevent;
 
-import android.content.Intent;
-import android.net.Uri;
-import androidx.annotation.Nullable;
-import com.example.postit.FirebaseStorageController;
-import com.example.postit.utils.GenUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -31,7 +26,6 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
     private static final String TAG = "CreateEventActivity";
     private BottomNavigationView navigation;
     private BottomNavMenu menu;
-    public static final String CURRENT_FRAGMENT = "CURRENT_FRAGMENT_CREATE_ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +36,7 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
         FragmentManager fManager = getSupportFragmentManager();
         FragmentTransaction transaction = fManager.beginTransaction();
 
-        transaction.add(R.id.create_event_container, fragment, CURRENT_FRAGMENT);
+        transaction.add(R.id.create_event_container, fragment);
         transaction.addToBackStack("chooseCategoryFragment");
         transaction.commit();
 
@@ -69,29 +63,16 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
 
     @Override
     public void onCreateEvent(Event event) {
-        FirebaseStorageController.uploadImage(event.getImagePath(), event.getTitle(),
-            new FirebaseStorageController.UploadImageListener() {
-                @Override
-                public void onSuccess(Uri uploadImgUri) {
-                    Log.i(TAG, "Image uploaded to Firebase");
-                    event.setWebImgUrl(uploadImgUri);
-                    publishEvent(event);
-                }
-
-                @Override
-                public void onError(String err) {
-                    Log.e(TAG, "Unable to upload image to Firebase, using default image instead");
-                    Uri uploadImgUri = Uri.parse(getResources().getString(R.string.default_event_image_url));
-                    event.setWebImgUrl(uploadImgUri);
-                    publishEvent(event);
-                }
-            });
+        publishEvent(event);
     }
 
-    private void publishEvent(Event event) {
+    public void publishEvent(Event event) {
         // TODO: Replace Url with actual backend API Url
         final String url = getString(R.string.backend_base_url);
         final JSONObject json = new JSONObject(event.toMap());
+        final Gson gson = new Gson();
+        String test = gson.toJson(event);
+        JsonObject json2 = new JsonParser().parse(test).getAsJsonObject();
 
         JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, url, json, (JSONObject res) -> {
             Toast.makeText(getApplicationContext(), "Event Published", Toast.LENGTH_SHORT).show();
@@ -109,27 +90,4 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
     public void exit() {
         finish();
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case GenUtils.PICK_IMAGE_REQUEST:
-                if (resultCode != RESULT_OK || data == null || data.getData() == null) return;
-                onPickImageResult(data);
-        }
-    }
-
-    private void onPickImageResult(Intent data) {
-        try {
-            ((NewEventFragment) getSupportFragmentManager().findFragmentByTag(CURRENT_FRAGMENT))
-                    .setBitmap(data.getData());
-            Toast.makeText(this,"Image Changed", Toast.LENGTH_SHORT).show();
-        } catch (NullPointerException | ClassCastException ex) {
-            Log.e(TAG, ex.getMessage());
-            Toast.makeText(this,"Failed to change images", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
 }

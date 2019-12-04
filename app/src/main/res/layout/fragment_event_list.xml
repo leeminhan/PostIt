@@ -1,134 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        >
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:orientation="vertical"
-            android:paddingLeft="14dp"
-            android:background="@color/colorBackground1">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_sports_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_sports_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_sports_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_games_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_games_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_games_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_eating_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_eating_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_eating_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_clubbing_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_clubbing_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_clubbing_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_shopping_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_shopping_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_shopping_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/vRecycleViewViewEvents"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 
-</ScrollView>
+
+</LinearLayout>
 

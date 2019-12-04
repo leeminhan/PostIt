@@ -64,7 +64,7 @@ public class ChooseCategoryFragment extends Fragment implements FragmentTransiti
         fManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                         R.anim.enter_from_left, R.anim.exit_to_right)
-                .replace(frame, fragment, CreateEventActivity.CURRENT_FRAGMENT)
+                .replace(frame, fragment)
                 .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();

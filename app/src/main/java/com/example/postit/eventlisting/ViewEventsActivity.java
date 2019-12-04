@@ -2,13 +2,21 @@ package com.example.postit.eventlisting;
 
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+ import androidx.fragment.app.FragmentManager;
+ import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.postit.R;
 import com.example.postit.utils.BottomNavMenu;
 
 public class ViewEventsActivity extends AppCompatActivity implements BottomNavMenu.NavActivity {
+
+    // strings for logcat,for Log.i(TAG, msg)
+    private static final String COMMON_TAG = "CombinedLifeCycle";
+    private static final String ACTIVITY_NAME = ViewEventsActivity.class.getSimpleName();
+    private static final String TAG = COMMON_TAG;
+
+//    // clickable tv
+//    TextView textView;
 
     private BottomNavigationView navigation;
     private BottomNavMenu menu;
@@ -22,12 +30,15 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
         navigation = (BottomNavigationView) findViewById(R.id.navbar_view_events);
         menu = new BottomNavMenu(this, navigation);
 
-        Fragment fragment = new EventListFragment();
+        addFragment();
+    }
+
+    private void addFragment(){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.view_events_container, fragment)
-                .addToBackStack(null)
-                .commit();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        EventListFragment eventListFragment = new EventListFragment();
+        fragmentTransaction.add(R.id.flEventListContainer, eventListFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
