@@ -3,6 +3,7 @@ package com.example.postit.createevent;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.Nullable;
+import com.example.postit.ActivityRequests;
 import com.example.postit.FirebaseStorageController;
 import com.example.postit.utils.GenUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

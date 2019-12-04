@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="backend_base_url2">http://13.67.95.12:8080</string>
-    <string name="backend_base_url">https://postman-echo.com/post</string>
+    <string name="backend_base_url">http://13.67.95.12:8080</string>
+    <string name="backend_base_url2">https://postman-echo.com/post</string>
     <string name="create_event_endpoint">/blog/create</string>
+    <string name="get_event_category_endpoint">/home/actListCategories/category</string>
 </resources>

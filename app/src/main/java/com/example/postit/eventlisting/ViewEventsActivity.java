@@ -1,6 +1,7 @@
 package com.example.postit.eventlisting;
 
 import android.os.Bundle;
+import com.example.postit.ActivityRequests;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +22,8 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
 
         navigation = (BottomNavigationView) findViewById(R.id.navbar_view_events);
         menu = new BottomNavMenu(this, navigation);
+
+//        ActivityRequests.getEventsBackend((Object obj) -> {});
 
         Fragment fragment = new EventListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
