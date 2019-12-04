@@ -1,5 +1,6 @@
 package com.example.postit.eventlisting;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -56,6 +57,8 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         eventListViewHolder.time.setText(timeText);
         eventListViewHolder.card.setOnClickListener((View v) -> {
             // TODO: replace with Aobos create event function
+            Intent openEventDetailsActivity = new Intent(eventListViewHolder.card.getContext(), EventDetailsActivity.class);
+            eventListViewHolder.card.getContext().startActivity(openEventDetailsActivity);
             Toast.makeText(eventListViewHolder.card.getContext(), events[i].getTitle(), Toast.LENGTH_LONG).show();
         });
     }

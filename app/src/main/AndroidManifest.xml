@@ -35,6 +35,10 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.example.postit.LoginActivity"/>
         </activity>
+        <activity
+                android:name=".eventlisting.EventDetailsActivity"
+                android:parentActivityName=".eventlisting.ViewEventsActivity">
+        </activity>
         <activity android:name=".createevent.CreateEventActivity"
                 android:label="@string/title_create_event">
         </activity>
