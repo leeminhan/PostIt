@@ -11,7 +11,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
 
-    <string name="title_create_event">Choose a Category</string>
+    <string name="title_create_event">Create your own Event</string>
     <string name="category_sports">Sports</string>
     <string name="category_board_games">Board Games</string>
     <string name="category_eat">Eat</string>
@@ -31,6 +31,7 @@
     <string name="descrip_hint">Event Description</string>
     <string name="attendees_hint">Max Attendees (Optional)</string>
     <string name="image_change_text">Click on the image to change it</string>
+    <string name="default_event_image_url">https://tmesystems.net/wp-content/uploads/2018/05/sutd-logo-300x180.jpg</string>
 
     <string name="save_event_button">Create &amp; Publish Event</string>
     <string name="invalid_date">Invalid Date</string>
@@ -38,8 +39,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_view_events">ViewEvents</string>
+    <string name="title_activity_view_events">Find Events Near You</string>
 
     <string name="title_view_events">Some title</string>
+    <string name="next_btn">Next</string>
+    <string name="add_your_favourite_actvities">Add Your Favourite Actvities</string>
+    <string name="add_a_profile_picture">Add A Profile Picture</string>
+    <string name="to_your_personalised_profile">To Your Personalised Profile</string>
 
 </resources>
