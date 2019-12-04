@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.AnyRes;
 import androidx.annotation.NonNull;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -60,5 +62,18 @@ public class GenUtils {
                 + '/' + context.getResources().getResourceEntryName(drawableId) );
         return imageUri;
     }
-
+//
+//    public static <T> T[] getArrayfromObject(Object obj) {
+//        JsonArray jArr = ((JsonObject) obj).getAsJsonArray();
+//        T[] array = new T[jArr.size()];
+//        try {
+//            for (int i = 0; i < jArr.size(); ++i) {
+//                array[i] = (T) jArr.get(i);
+//            }
+//            return array;
+//        } catch (ClassCastException ex) {
+//            return array;
+//        }
+//
+//    }
 }

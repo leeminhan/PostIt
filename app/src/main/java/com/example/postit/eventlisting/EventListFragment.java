@@ -14,6 +14,8 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.FragmentTransition;
 import com.example.postit.models.HoriztontalSpaceItemDecoration;
+import com.example.postit.requests.EventRequests;
+import com.example.postit.utils.GenUtils;
 import org.json.JSONObject;
 
 import java.text.ParseException;
@@ -117,6 +119,10 @@ public class EventListFragment extends Fragment implements FragmentTransition {
                 .addToBackStack(null)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
+    }
+
+    public void setEvents(Event[] events) {
+
     }
 
 }
