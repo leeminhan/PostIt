@@ -42,6 +42,15 @@
         <activity android:name=".createevent.CreateEventActivity"
                 android:label="@string/title_create_event">
         </activity>
+
+    <activity android:name=".notifications.MainActivity"
+        android:label="Display Notifications">
+    </activity>
+    <activity android:name=".myactivities.MainActivity2"
+        android:label="Display Your Activities">
+    </activity>
+
+
     </application>
 
 </manifest>
