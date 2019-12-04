@@ -3,7 +3,6 @@ package com.example.postit.createevent;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.Nullable;
-import com.example.postit.ActivityRequests;
 import com.example.postit.FirebaseStorageController;
 import com.example.postit.utils.GenUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,9 +20,6 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.utils.BottomNavMenu;
 import com.example.postit.utils.ReqUtil;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.json.JSONObject;
 
 public class CreateEventActivity extends AppCompatActivity implements NewEventFragment.OnCreateEventListener,

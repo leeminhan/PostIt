@@ -43,10 +43,10 @@
                 android:label="@string/title_create_event">
         </activity>
 
-    <activity android:name=".notifications.MainActivity"
+    <activity android:name=".notifications.NotificationActivity"
         android:label="Display Notifications">
     </activity>
-    <activity android:name=".myactivities.MainActivity2"
+    <activity android:name=".myactivities.MyActivitiesActivity"
         android:label="Display Your Activities">
     </activity>
 

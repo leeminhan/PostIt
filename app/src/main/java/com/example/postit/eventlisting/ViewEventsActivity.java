@@ -1,7 +1,6 @@
 package com.example.postit.eventlisting;
 
 import android.os.Bundle;
-import com.example.postit.ActivityRequests;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

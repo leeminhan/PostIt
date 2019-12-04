@@ -1,13 +1,13 @@
-package com.example.postit.myactivities;
+package com.example.postit.notifications;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-public class MainActivity2 extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "NotificationActivity";
 
     private SectionStatePagerAdapter mSectionStatePagerAdapter;
     private ViewPager mViewPager;
@@ -29,10 +29,8 @@ public class MainActivity2 extends AppCompatActivity {
         SectionStatePagerAdapter adapter = new SectionStatePagerAdapter(getSupportFragmentManager());
         //by default it will expand the first fragment that you
         //add to the adapter
-
-        adapter.addFragment(new Fragment2(), "Fragment2");
+        adapter.addFragment(new Fragment1(), "Fragment1");
         viewpager.setAdapter(adapter);
-
     }
 
     //pass fragment index to navigate to another fragment
