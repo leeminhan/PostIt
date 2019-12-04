@@ -6,9 +6,13 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.postit.App;
 import com.example.postit.R;
 import com.example.postit.models.Event;
+import com.example.postit.utils.GenUtils;
 import com.example.postit.utils.ReqUtil;
+import com.google.gson.JsonObject;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.util.HashMap;
 
 public class EventRequests extends ActivityRequests {
@@ -67,11 +71,41 @@ public class EventRequests extends ActivityRequests {
         map.put("username", username);
         final JSONObject json = new JSONObject(map);
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, successL::onSuccess,
-                (VolleyError err) -> {
-                    err.printStackTrace();
-                    errorL.onError(err, null);
-                });
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, (JSONObject obj) -> {
+            try {
+                successL.onSuccess(processGetUserEvents(obj));
+            } catch (Exception ex) {
+                errorL.onError(ex, null);
+            }
+        }, (VolleyError err) -> {
+            err.printStackTrace();
+            errorL.onError(err, null);
+        });
         ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+    }
+
+    private static Event[] processGetUserEvents(JSONObject res) {
+        JSONObject[] objArr = GenUtils.getArrayFromObject(res);
+        Event[] events = new Event[objArr.length];
+        try {
+            for (int i = 0; i < objArr.length; ++i) {
+                JSONObject obj = objArr[i];
+                HashMap<String, Object> map = GenUtils.getMapFromObject(obj);
+                Event event = new Event().setId((String) map.get("unq_id"))
+                        .setCategory((String) map.get("category"))
+                        .setDate((String) map.get("date"))
+                        .setCreator((String) map.get("creator"))
+                        .setLocation((String) map.get("location"))
+                        .setPpl(Integer.parseInt((String) map.get("ppl")))
+                        .setImagePath((String) map.get("image_uri"))
+                        .setDescrip((String) map.get("description"))
+                        .setMaxPpl(Integer.parseInt((String) map.get("max_ppl")));
+                events[i] = event;
+            }
+        } catch (ParseException | NullPointerException ex) {
+            ex.printStackTrace();
+        }
+        return events;
+
     }
 }

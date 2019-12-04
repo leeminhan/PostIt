@@ -7,13 +7,16 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.AnyRes;
 import androidx.annotation.NonNull;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.json.JSONObject;
 
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 public class GenUtils {
     public enum DateFormat { STANDARD }
@@ -25,6 +28,8 @@ public class GenUtils {
             case STANDARD:
                 if (date.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})")) {
                     return new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                } else if (date.matches("([0-9]{2})-([0-9]{2})-([0-9]{4})")) {
+                    return new SimpleDateFormat("dd-MM-yyyy").parse(date);
                 } else {
                     throw new ParseException("Invalid Date", 0);
                 }
@@ -62,18 +67,22 @@ public class GenUtils {
                 + '/' + context.getResources().getResourceEntryName(drawableId) );
         return imageUri;
     }
-//
-//    public static <T> T[] getArrayfromObject(Object obj) {
-//        JsonArray jArr = ((JsonObject) obj).getAsJsonArray();
-//        T[] array = new T[jArr.size()];
-//        try {
-//            for (int i = 0; i < jArr.size(); ++i) {
-//                array[i] = (T) jArr.get(i);
-//            }
-//            return array;
-//        } catch (ClassCastException ex) {
-//            return array;
-//        }
-//
-//    }
+
+    public static <T> T[] getArrayFromObject(Object obj) {
+        JsonArray jArr = ((JsonObject) obj).getAsJsonArray();
+        T[] array = (T[]) new Object[jArr.size()];
+        try {
+            for (int i = 0; i < jArr.size(); ++i) {
+                array[i] = (T) jArr.get(i);
+            }
+            return array;
+        } catch (ClassCastException ex) {
+            return array;
+        }
+
+    }
+
+    public static HashMap<String, Object> getMapFromObject(JSONObject obj) {
+        return new Gson().fromJson(obj.toString(), HashMap.class);
+    }
 }

@@ -40,8 +40,8 @@ public class EventTemplate extends Event {
                 return gamesEvent();
             case EATING_EVENT:
                 return eatingEvent();
-            case CLUBBING_EVENT:
-                return clubbingEvent();
+            case MUSIC_EVENT:
+                return musicEvent();
             case SHOPPING_EVENT:
                 return shoppingEvent();
             default:
@@ -121,16 +121,16 @@ public class EventTemplate extends Event {
                 R.drawable.sutd_logo);
     }
 
-    public static EventTemplate clubbingEvent() {
+    public static EventTemplate musicEvent() {
         final Context context = App.getContext();
         return new EventTemplate(context,
-                context.getString(R.string.event_clubbing_default_category),
-                context.getString(R.string.event_clubbing_default_title),
+                context.getString(R.string.event_music_default_category),
+                context.getString(R.string.event_music_default_title),
                 getCurrentDateStr(),
                 getCurrentTimeStr(),
-                context.getString(R.string.event_clubbing_default_location),
+                context.getString(R.string.event_music_default_location),
                 "",
-                context.getString(R.string.event_clubbing_default_descrip),
+                context.getString(R.string.event_music_default_descrip),
                 R.drawable.sutd_logo);
     }
 
@@ -167,7 +167,8 @@ public class EventTemplate extends Event {
     }
 
     public String getDefaultCategory() {
-        return defaultCategory;
+        if (defaultCategory.length() < 2) return defaultCategory;
+        return defaultCategory.substring(0, 1).toUpperCase() + defaultCategory.substring(1);
     }
 
     public String getDefaultTitle() {

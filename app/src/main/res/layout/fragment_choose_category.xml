@@ -61,9 +61,9 @@
                     app:cardElevation="8dp"
                     app:cardCornerRadius="8dp"/>
             <com.example.postit.createevent.ImageCardView
-                    android:id="@+id/clubbing_card"
-                    app:cardString="Clubbing"
-                    app:cardDrawable="@drawable/ic_local_bar_24px"
+                    android:id="@+id/music_card"
+                    app:cardString="Music"
+                    app:cardDrawable="@drawable/ic_music_video_24px"
                     app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
