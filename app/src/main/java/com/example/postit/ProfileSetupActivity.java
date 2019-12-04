@@ -1,10 +1,13 @@
 package com.example.postit;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,9 +21,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import com.example.postit.eventlisting.ViewEventsActivity;
+import com.example.postit.utils.GenUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class ProfileSetupActivity extends AppCompatActivity {
@@ -38,9 +44,9 @@ public class ProfileSetupActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_preferences_setup_p2);
+        setContentView(R.layout.profile_preferences_setup);
 
-        uploadProfileImageBtn = findViewById(R.id.upload_profile_img_btn);
+        uploadProfileImageBtn = findViewById(R.id.uploadProfileImageBtn);
         shoppingBtn = findViewById(R.id.shoppingBtn);
         sportsBtn = findViewById(R.id.sportsBtn);
         gamesBtn = findViewById(R.id.gamesBtn);
@@ -58,16 +64,18 @@ public class ProfileSetupActivity extends AppCompatActivity {
         jsonParams.put("telegram","tele");
 
 
-//        // Upload Profile Images
-//        uploadProfileImageBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //Todo: prompt user to upload from gallery
-//                // Selected image upload to database
-//
-//            }
-//        });
-//
+        // Upload Profile Images
+        uploadProfileImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Todo: prompt user to upload from gallery
+                // Selected image upload to database
+
+                GenUtils.chooseImage(ProfileSetupActivity.this);
+
+            }
+        });
+
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,5 +186,24 @@ public class ProfileSetupActivity extends AppCompatActivity {
 //        requestQueue.add(postRequest);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        switch (requestCode) {
+            case GenUtils.PICK_IMAGE_REQUEST:
+                if (resultCode != RESULT_OK || data == null || data.getData() == null) return;
+                onPickImageResult(data);
+        }
+    }
+
+    public void onPickImageResult(Intent data){
+        try{
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+            uploadProfileImageBtn.setImageBitmap(bitmap);
+        }catch (IOException ex){
+            Log.e("error", ex.getMessage());
+        }
+
+    }
 }
