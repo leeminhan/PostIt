@@ -2,6 +2,8 @@ package com.example.postit.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import com.example.postit.myactivities.MyActivitiesActivity;
+import com.example.postit.notifications.NotificationActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.view.Menu;
@@ -26,6 +28,8 @@ public class BottomNavMenu {
     private HashMap<Integer, Class> activityMap = new HashMap<Integer, Class>() {{
         put(R.id.navigation_view_events, ViewEventsActivity.class);
         put(R.id.navigation_create_event, CreateEventActivity.class);
+        put(R.id.navigation_my_activites, MyActivitiesActivity.class);
+        put(R.id.navigation_notifications, NotificationActivity.class);
     }};
 
     public BottomNavMenu(NavActivity caller, BottomNavigationView v) {
