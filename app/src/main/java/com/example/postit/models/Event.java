@@ -17,9 +17,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Event {
-    private String title;
+    public enum Category {
+        SPORTS, SHOPPING, GAMES, FOOD, MUSIC, OTHERS
+    }
 
-    private String category;
+    private HashMap<Category, String> categoryMapping = new HashMap<Category, String>() {{
+       put(Category.SPORTS, "sports");
+       put(Category.SHOPPING, "shopping");
+       put(Category.GAMES, "games");
+       put(Category.FOOD, "food");
+       put(Category.MUSIC, "music");
+       put(Category.OTHERS, "others");
+    }};
+
+    private String title;
+    private String id;
+    private String creator;
+
+    private Category category;
     private Date date;
     private Time time;
     private String location;
@@ -39,7 +54,7 @@ public class Event {
 
     public Map toMap() {
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("category", getCategory());
+        map.put("category", getCategoryStr());
         map.put("title", getTitle());
         map.put("date", getDate());
         map.put("time", getTime());
@@ -55,6 +70,24 @@ public class Event {
         this.title = title;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public Event setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public Event setCreator(String creator) {
+        this.creator = creator;
+        return this;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -68,11 +101,21 @@ public class Event {
         return setTitle(s.getInput());
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryStr() {
+        return categoryMapping.get(category);
     }
 
     public Event setCategory(String category) {
+        for (Map.Entry<Category, String> entry: categoryMapping.entrySet()) {
+            if (category.toLowerCase().equals(entry.getValue())) {
+                this.category = entry.getKey();
+                return this;
+            }
+        }
+        return this;
+    }
+
+    public Event setCategory(Category category) {
         this.category = category;
         return this;
     }

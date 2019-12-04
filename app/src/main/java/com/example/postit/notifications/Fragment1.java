@@ -301,7 +301,7 @@ public class Fragment1 extends Fragment {
 
             }
 
-        }, (VolleyError err, Object obj) -> {
+        }, (Exception err, Object obj) -> {
             Log.e(TAG, err.getMessage());
         });
 

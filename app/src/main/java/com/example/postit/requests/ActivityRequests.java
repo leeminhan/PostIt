@@ -21,6 +21,6 @@ public class ActivityRequests {
     }
 
     public interface RequestErrorListener {
-        void onError(VolleyError err, @Nullable Object obj);
+        void onError(Exception ex, @Nullable Object obj);
     }
  }

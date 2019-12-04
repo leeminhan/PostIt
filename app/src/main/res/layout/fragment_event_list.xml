@@ -88,7 +88,7 @@
                 android:layout_marginTop="@dimen/event_listing_vertical_padding"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_clubbing_title"
+                android:text="@string/event_list_music_title"
         />
         <TextView
                 android:layout_width="wrap_content"
@@ -96,9 +96,9 @@
                 android:layout_marginBottom="@dimen/event_listing_vertical_padding"
                 android:textColor="@color/colorEventListSubtitle"
                 android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_clubbing_subtitle"
+                android:text="@string/event_list_music_subtitle"
         />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_clubbing_list"
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_music_list"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
                                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

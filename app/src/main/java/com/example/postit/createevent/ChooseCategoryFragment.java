@@ -26,7 +26,7 @@ public class ChooseCategoryFragment extends Fragment implements FragmentTransiti
     private ImageCardView sportsCard;
     private ImageCardView gamesCard;
     private ImageCardView eatingCard;
-    private ImageCardView clubbingCard;
+    private ImageCardView musicCard;
     private ImageCardView shoppingCard;
     private ImageCardView othersCard;
 
@@ -45,7 +45,7 @@ public class ChooseCategoryFragment extends Fragment implements FragmentTransiti
         sportsCard.setOnClickListener((v) -> goToEventFragment(EventCategory.SPORTS_EVENT));
         gamesCard.setOnClickListener((v) -> goToEventFragment(EventCategory.GAMES_EVENT));
         eatingCard.setOnClickListener((v) -> goToEventFragment(EventCategory.EATING_EVENT));
-        clubbingCard.setOnClickListener((v) -> goToEventFragment(EventCategory.CLUBBING_EVENT));
+        musicCard.setOnClickListener((v) -> goToEventFragment(EventCategory.MUSIC_EVENT));
         shoppingCard.setOnClickListener((v) -> goToEventFragment(EventCategory.SHOPPING_EVENT));
         othersCard.setOnClickListener((v) -> goToEventFragment(null));
     }
@@ -74,7 +74,7 @@ public class ChooseCategoryFragment extends Fragment implements FragmentTransiti
         sportsCard = getView().findViewById(R.id.sports_card);
         gamesCard = getView().findViewById(R.id.games_card);
         eatingCard = getView().findViewById(R.id.eating_card);
-        clubbingCard = getView().findViewById(R.id.clubbing_card);
+        musicCard = getView().findViewById(R.id.music_card);
         shoppingCard = getView().findViewById(R.id.shopping_card);
         othersCard = getView().findViewById(R.id.others_card);
 

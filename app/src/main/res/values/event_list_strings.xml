@@ -6,8 +6,8 @@
     <string name="event_list_games_subtitle">Destress and play some games!</string>
     <string name="event_list_eating_title">Eating Events</string>
     <string name="event_list_eating_subtitle">Hungry people unite!</string>
-    <string name="event_list_clubbing_title">Clubbing Events</string>
-    <string name="event_list_clubbing_subtitle">Let loose</string>
+    <string name="event_list_music_title">Music Events</string>
+    <string name="event_list_music_subtitle">Let loose</string>
     <string name="event_list_shopping_title">Shopping events</string>
     <string name="event_list_shopping_subtitle">Get some groceries!</string>
 </resources>

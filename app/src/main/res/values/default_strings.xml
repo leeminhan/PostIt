@@ -3,33 +3,33 @@
 
     <!--Sports Event Details -->
     <string name="event_sports_default_title">Let\'s Play Some Sports!</string>
-    <string name="event_sports_default_category">Sports</string>
+    <string name="event_sports_default_category">sports</string>
     <string name="event_sports_default_location">SUTD Sports Stadium</string>
     <string name="event_sports_default_image_path">some image path</string>
 
     <!--Games Event Details -->
     <string name="event_games_default_title">Let\'s Play Some Games!</string>
-    <string name="event_games_default_category">Games</string>
+    <string name="event_games_default_category">games</string>
     <string name="event_games_default_location">SUTD Hostel</string>
     <string name="event_games_default_image_path">some image path</string>
 
     <!--Eating Event Details -->
     <string name="event_eating_default_title">Let\'s Eat Together!</string>
-    <string name="event_eating_default_category">Eating</string>
+    <string name="event_eating_default_category">eating</string>
     <string name="event_eating_default_location">SUTD Canteen!</string>
     <string name="event_eating_default_descrip">DSBJ!</string>
     <string name="event_eating_default_image_path">some image path</string>
 
-    <!--Clubbing Event Details -->
-    <string name="event_clubbing_default_title">Let\'s go Clubbing!</string>
-    <string name="event_clubbing_default_category">Clubbing</string>
-    <string name="event_clubbing_default_location">SUTD Hostel Pickup Point</string>
-    <string name="event_clubbing_default_descrip">Grab to club!</string>
-    <string name="event_clubbing_default_image_path">some image path</string>
+    <!--Music Event Details -->
+    <string name="event_music_default_title">Let\'s go listen to bands!!</string>
+    <string name="event_music_default_category">music</string>
+    <string name="event_music_default_location">SUTD Hostel Pickup Point</string>
+    <string name="event_music_default_descrip">Grab to concert!</string>
+    <string name="event_music_default_image_path">some image path</string>
 
     <!--Shopping Event Details -->
     <string name="event_shopping_default_title">Let\'s go Shopping!</string>
-    <string name="event_shopping_default_category">Shopping</string>
+    <string name="event_shopping_default_category">shopping</string>
     <string name="event_shopping_default_location">Changi City Point</string>
     <string name="event_shopping_default_image_path">some image path</string>
 </resources>
