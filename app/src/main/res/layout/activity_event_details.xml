@@ -69,7 +69,8 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
 <!--            <com.example.postit.createevent.EventDetailRowView-->
@@ -110,7 +111,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textColor="@android:color/black"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -136,7 +138,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:textColor="@android:color/black"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -154,7 +157,7 @@
                     android:tint="@color/colorPrimaryDark"
                     android:layout_weight="1"
                     android:layout_width="70dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp" />
 
                 <TextView
                     android:id="@+id/tvEventDetailsLocation"
@@ -163,7 +166,8 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
 <!--            <com.example.postit.createevent.EventDetailRowView-->
@@ -187,7 +191,7 @@
                     android:tint="@color/colorPrimaryDark"
                     android:layout_weight="1"
                     android:layout_width="70dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp" />
 
                 <TextView
                     android:id="@+id/tvEventDetailsDescription"
@@ -196,7 +200,8 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
         </LinearLayout>
