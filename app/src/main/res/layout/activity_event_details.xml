@@ -47,14 +47,38 @@
                 android:paddingBottom="@dimen/create_event_image_padding"
                 android:src="@drawable/sutd_logo"/>
 
-
-            <com.example.postit.createevent.EventDetailRowView
-                android:id="@+id/rvEventDetailsCategory"
+            <LinearLayout
+                android:id="@+id/llEventDetailsCategory"
+                android:weightSum="2"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:rowField="@string/category_hint"
-                app:rowImage="@drawable/ic_category_24px"
-                android:orientation="horizontal"/>
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_category_24px"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"/>
+
+                <TextView
+                    android:id="@+id/tvEventDetailsCategory"
+                    android:hint="Category"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+<!--            <com.example.postit.createevent.EventDetailRowView-->
+<!--                android:id="@+id/rvEventDetailsCategory"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:rowField="@string/category_hint"-->
+<!--                app:rowImage="@drawable/ic_category_24px"-->
+<!--                android:orientation="horizontal"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,56 +86,118 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.example.postit.createevent.EventDetailRowView
-
-                    android:id="@+id/rvEventDetailsDate"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/llEventDetailsDate"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:rowField="@string/date_hint"
-                    app:rowImage="@drawable/ic_cal_24"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_weight="1">
 
-                </com.example.postit.createevent.EventDetailRowView>
+                    <ImageView
+                        android:src="@drawable/ic_cal_24"
+                        android:tint="@color/colorPrimaryDark"
+                        android:layout_weight="1"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"/>
 
-                <com.example.postit.createevent.EventDetailRowView
-                    android:id="@+id/rvEventDetailsTime"
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tvEventDetailsDate"
+                        android:hint="Date DD/MM/YY"
+                        android:textSize="18dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEventDetailsTime"
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:rowField="@string/time_hint"
-                    app:rowImage="@drawable/ic_access_time_24px"
-                    android:orientation="horizontal">
+                    android:layout_weight="1">
 
-                </com.example.postit.createevent.EventDetailRowView>
+                    <ImageView
+                        android:src="@drawable/ic_access_time_24px"
+                        android:tint="@color/colorPrimaryDark"
+                        android:layout_weight="1"
+                        android:layout_width="70dp"
+                        android:layout_height="50dp"/>
+
+                    <TextView
+                        android:id="@+id/tvEventDetailsTime"
+                        android:hint="HH:MM"
+                        android:textSize="18dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+                </LinearLayout>
 
             </LinearLayout>
 
-            <com.example.postit.createevent.EventDetailRowView
-                android:id="@+id/rvEventDetailsLocation"
+            <LinearLayout
+                android:id="@+id/llEventDetailsLocation"
+                android:weightSum="2"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:rowField="@string/location_hint"
-                app:rowImage="@drawable/ic_location_pin"
-                android:orientation="horizontal"/>
+                android:layout_weight="1">
 
-            <com.example.postit.createevent.EventDetailRowView
-                android:id="@+id/rvEventDetailsDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:rowField="@string/descrip_hint"
-                app:rowImage="@drawable/ic_description_24px"
-                android:orientation="horizontal"/>
+                <ImageView
+                    android:src="@drawable/ic_location_pin"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"/>
+
+                <TextView
+                    android:id="@+id/tvEventDetailsLocation"
+                    android:hint="Location"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </LinearLayout>
 
 <!--            <com.example.postit.createevent.EventDetailRowView-->
-<!--                android:id="@+id/rvEventDetailsMaxPeople"-->
+<!--                android:id="@+id/rvEventDetailsLocation"-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                app:rowField="@string/attendees_hint"-->
-<!--                app:rowImage="@drawable/ic_people_24px"-->
-<!--                app:onlyNumberInput="true"-->
+<!--                app:rowField="@string/location_hint"-->
+<!--                app:rowImage="@drawable/ic_location_pin"-->
 <!--                android:orientation="horizontal"/>-->
 
+            <LinearLayout
+                android:id="@+id/llEventDetailsDescription"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:src="@drawable/ic_description_24px"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"
+                    android:layout_width="70dp"
+                    android:layout_height="50dp"/>
+
+                <TextView
+                    android:id="@+id/tvEventDetailsDescription"
+                    android:hint="Description"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -121,10 +207,11 @@
         android:id="@+id/tvJoinTelegramGroupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:text="@string/open_telegram_group"
-        android:background="@color/colorCreateEventButton"
+        android:background="@android:color/white"
         android:textAlignment="center"
-        android:textColor="@color/colorCreateEventButtonText"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/create_event_button_font_size"
         android:textStyle="bold"
         android:paddingTop="@dimen/create_event_button_padding_vertical"

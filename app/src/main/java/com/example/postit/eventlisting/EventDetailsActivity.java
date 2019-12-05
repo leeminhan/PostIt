@@ -24,11 +24,11 @@ public class EventDetailsActivity extends AppCompatActivity {
     // initialise Views
     TextView tvEventDetailsTitle;
     ImageView ivEventDetailsImage;
-    EventDetailRowView rvEventDetailsCategory;
-    EventDetailRowView rvEventDetailsDate;
+    TextView tvEventDetailsCategory, tvEventDetailsDate, tvEventDetailsTime, tvEventDetailsLocation, tvEventDetailsDescription;
+//    EventDetailRowView rvEventDetailsDate;
     EventDetailRowView rvEventDetailsTime;
-    EventDetailRowView rvEventDetailsLocation;
-    EventDetailRowView rvEventDetailsDescription;
+//    EventDetailRowView rvEventDetailsLocation;
+//    EventDetailRowView rvEventDetailsDescription;
     TextView tvJoinTelegramGroupButton;
 
     @Override
@@ -39,11 +39,11 @@ public class EventDetailsActivity extends AppCompatActivity {
         // bind the xml widget which this activity
         tvEventDetailsTitle = findViewById(R.id.tvEventDetailsTitle);
         ivEventDetailsImage = findViewById(R.id.ivEventDetailsImage);
-        rvEventDetailsCategory = findViewById(R.id.rvEventDetailsCategory);
-        rvEventDetailsDate = findViewById(R.id.rvEventDetailsDate);
-        rvEventDetailsTime = findViewById(R.id.rvEventDetailsTime);
-        rvEventDetailsLocation = findViewById(R.id.rvEventDetailsLocation);
-        rvEventDetailsDescription = findViewById(R.id.rvEventDetailsDescription);
+        tvEventDetailsCategory = findViewById(R.id.tvEventDetailsCategory);
+        tvEventDetailsDate = findViewById(R.id.tvEventDetailsDate);
+        tvEventDetailsTime = findViewById(R.id.tvEventDetailsTime);
+        tvEventDetailsLocation = findViewById(R.id.tvEventDetailsLocation);
+        tvEventDetailsDescription = findViewById(R.id.tvEventDetailsDescription);
 
 
         // TODO fetch from the somewhere
@@ -53,12 +53,12 @@ public class EventDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String eventDate, String eventCategory, String eventDescription,
                                    String eventLocation, String eventTime, String eventImage) {
-                rvEventDetailsDate.setText(eventDate);
-                rvEventDetailsCategory.setText(eventCategory);
+                tvEventDetailsDate.setText(eventDate);
+                tvEventDetailsCategory.setText(eventCategory);
                 Picasso.get().load(eventImage).into(ivEventDetailsImage);
-                rvEventDetailsTime.setText(eventTime);
-                rvEventDetailsLocation.setText(eventLocation);
-                rvEventDetailsDescription.setText(eventDescription);
+                tvEventDetailsTime.setText(eventTime);
+                tvEventDetailsLocation.setText(eventLocation);
+                tvEventDetailsDescription.setText(eventDescription);
                 Log.i("image", String.valueOf(eventImage));
             }
         });
