@@ -11,13 +11,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.postit.eventlisting.ViewEventsActivity;
+import com.example.postit.utils.ReqUtil;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,10 +38,10 @@ public class LoginPageActivity extends AppCompatActivity {
     private EditText emailAddress, password;
     private Button loginBtn;
     Button signUpBtn;
-    // TODO change the URL to our url
+    // TODO change the URL to our url (our url could be wrong)
 //    private static String URL_LOGIN = "http://10.12.115.166/newPHP/login.php";
-    private static String URL_LOGIN = "http://13.67.95.12/auth/login";
-    // http://13.67.95.12/auth/login
+//    private static String URL_LOGIN = "https://api.myjson.com/bins/uda24";
+     private static String URL_LOGIN = "http://13.67.95.12:8080/auth/login";
 
 
     @Override
@@ -79,41 +87,50 @@ public class LoginPageActivity extends AppCompatActivity {
     }
 
     private void Login(final String username, final String password) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
-                new Response.Listener<String>() {
+        JSONObject jsonObject = new JSONObject(new HashMap<String, String>(){{
+            put("username", username);
+            put("password", password);
+        }});
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL_LOGIN, jsonObject,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(JSONObject response) {
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String sucess = jsonObject.getString("status");
-                            Toast.makeText(LoginPageActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(LoginPageActivity.this, ViewEventsActivity.class);
-                            startActivity(intent);
+                            int success = response.getInt("status");
+                            if (success == 1) {
+                                Intent intent = new Intent(LoginPageActivity.this, ViewEventsActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(LoginPageActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(LoginPageActivity.this, "Error "+e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(LoginPageActivity.this, "Error "+error.toString(), Toast.LENGTH_SHORT).show();
+                        String message = null;
+                        if (error instanceof NetworkError) {
+                            message = "Cannot connect to Internet...Please check your connection!#####";
+                        } else if (error instanceof ServerError) {
+                            message = "The server could not be found. Please try again after some time!!";
+                        } else if (error instanceof AuthFailureError) {
+                            message = "Cannot connect to Internet...Please check your connection!";
+                        } else if (error instanceof ParseError) {
+                            message = "Parsing error! Please try again after some time!!";
+                        } else if (error instanceof NoConnectionError) {
+                            message = "Cannot connect to Internet...Please check your connection!";
+                        } else if (error instanceof TimeoutError) {
+                            message = "Connection TimeOut! Please check your internet connection.";
+                        }
+                        Toast.makeText(LoginPageActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("username", username);
-                params.put("password", password);
+                });
 
-                return params;
-            }
-        };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        ReqUtil.getInstance(this).addToRequestQueue(request);
     }
 }
