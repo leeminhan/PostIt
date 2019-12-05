@@ -24,8 +24,9 @@ public class EventDetailsFetcher {
     String eventTime;
     String eventImage;
 
-    // event id is now displayed in user interfaces
+    // things are not displayed in user interfaces
     int eventUnqId;
+    // max people for the event
 
     public EventDetailsFetcher(Context context, String s, jsonParseListener listener) {
         jsonParse(context, s, listener);

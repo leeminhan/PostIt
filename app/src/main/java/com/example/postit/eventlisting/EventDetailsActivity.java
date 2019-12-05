@@ -29,7 +29,6 @@ public class EventDetailsActivity extends AppCompatActivity {
     EventDetailRowView rvEventDetailsTime;
     EventDetailRowView rvEventDetailsLocation;
     EventDetailRowView rvEventDetailsDescription;
-//    EventDetailRowView rvEventDetailsMaxPeople;
     TextView tvJoinTelegramGroupButton;
 
     @Override
@@ -45,7 +44,6 @@ public class EventDetailsActivity extends AppCompatActivity {
         rvEventDetailsTime = findViewById(R.id.rvEventDetailsTime);
         rvEventDetailsLocation = findViewById(R.id.rvEventDetailsLocation);
         rvEventDetailsDescription = findViewById(R.id.rvEventDetailsDescription);
-//        rvEventDetailsMaxPeople = findViewById(R.id.rvEventDetailsMaxPeople);
 
 
         // TODO fetch from the somewhere
