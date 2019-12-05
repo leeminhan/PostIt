@@ -4,53 +4,113 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/LoginRegistrationPreferences">
 
     <Button
         android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/montserrat"
         android:text="@string/next_btn"
+        android:textColor="@color/font_black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat"
-        android:text="@string/add_your_favourite_actvities"
+        android:gravity="center"
+        android:text="Select Favourite Activites"
         android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/uploadProfileImageBtn" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/to_your_personalised_profile"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageButton
+        android:id="@+id/shoppingBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:srcCompat="@drawable/ic_category_shopping" />
 
     <ImageButton
         android:id="@+id/musicBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
         app:srcCompat="@drawable/category_music" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/category_food"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodBtn" />
+
+    <ImageButton
+        android:id="@+id/othersBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/rounded_button"
+        android:contentDescription="TODO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gamesBtn"
+        app:srcCompat="@drawable/ic_category_others" />
 
     <ImageButton
         android:id="@+id/foodBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toStartOf="@+id/musicBtn"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shoppingBtn"
         app:srcCompat="@drawable/category_food" />
@@ -59,70 +119,123 @@
         android:id="@+id/gamesBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/category_games" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/category_others"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.694"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/othersBtn" />
 
     <ImageButton
         android:id="@+id/sportsBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toStartOf="@+id/gamesBtn"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toEndOf="@+id/shoppingBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:srcCompat="@drawable/ic_sports_football_24px" />
 
-    <ImageButton
-        android:id="@+id/othersBtn"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="44dp"
-        android:contentDescription="TODO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamesBtn"
-        app:srcCompat="@drawable/ic_category_others" />
-
-    <ImageButton
-        android:id="@+id/shoppingBtn"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:srcCompat="@drawable/ic_category_shopping" />
-
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/to_your_personalised_profile"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/category_music"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/musicBtn" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/event_games_default_category"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gamesBtn" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/category_shopping"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingBtn" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/category_sports"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sportsBtn" />
 
     <ImageButton
         android:id="@+id/uploadProfileImageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/rounded_button"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_user"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="TODO" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView"
@@ -131,96 +244,13 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
-        android:text="ADD A PICTURE"
+        android:text="Upload Profile Picture"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
-        android:textStyle="bold"
         android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/montserrat"
-        android:textStyle="bold"
-        android:text="@string/category_shopping"
-        android:textAllCaps="true"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/shoppingBtn" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/category_sports"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sportsBtn" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="48dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/event_games_default_category"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamesBtn" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/category_food"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodBtn" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/category_music"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/musicBtn" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/category_others"
-        android:textAllCaps="true"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/othersBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

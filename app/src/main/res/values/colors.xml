@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f7f7f7</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#00733d</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBackground1">#FFFFFF</color>
     <color name="colorCreateEventButton">#a6a6a6</color>
     <color name="colorCreateEventButtonText">#009c46</color>
     <color name="colorEventListSubtitle">#878787</color>
+    <color name="LoginRegistrationPreferences">#D5C8BA</color>
+    <color name="font_black">#0A0A0A</color>
 </resources>

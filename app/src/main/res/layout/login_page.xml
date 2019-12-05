@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/LoginRegistrationPreferences">
 
 
     <ImageView
@@ -23,8 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:fontFamily="@font/cabin"
+        android:fontFamily="@font/montserrat"
         android:text="PostIt"
+        android:textColor="@color/colorPrimary"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -33,10 +35,12 @@
 
     <Button
         android:id="@+id/loginBtn"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="380dp"
         android:text="@string/login"
+        android:textColor="@color/font_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +48,14 @@
 
     <Button
         android:id="@+id/signUpBtn"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="380dp"
         android:layout_marginEnd="60dp"
+        android:fontFamily="@font/montserrat"
         android:text="@string/sign_up"
+        android:textColor="@color/font_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,9 +66,11 @@
         android:layout_marginTop="212dp"
         android:drawableStart="@drawable/ic_email"
         android:ems="10"
-        android:fontFamily="@font/cabin"
-        android:hint="Email Address"
+        android:fontFamily="@font/montserrat"
+        android:hint="  EMAIL ADDRESS"
         android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +83,11 @@
         android:layout_marginTop="28dp"
         android:drawableLeft="@drawable/ic_password"
         android:ems="10"
-        android:hint="Password"
+        android:fontFamily="@font/montserrat"
+        android:hint="  PASSWORD"
         android:inputType="textPassword"
+        android:textColorHint="@color/colorPrimary"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
