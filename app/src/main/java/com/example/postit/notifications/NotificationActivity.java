@@ -24,7 +24,7 @@ public class NotificationActivity extends AppCompatActivity implements BottomNav
         setContentView(R.layout.activity_notifications);
 
         mSectionStatePagerAdapter = new SectionStatePagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.viewpager_container);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager_container_notifications);
 
         //setup the pager, taking the previous viewpager as an argument
         setupViewPager(mViewPager);
