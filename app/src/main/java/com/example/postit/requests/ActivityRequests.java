@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class ActivityRequests {
     protected static final String backendBaseUrl = App.getContext().getString(R.string.backend_base_url);
-
+    protected static final String backendBaseUrl3 = App.getContext().getString(R.string.backend_base_url3);
 
     public interface RequestSuccessListener {
         void onSuccess(Object obj);
