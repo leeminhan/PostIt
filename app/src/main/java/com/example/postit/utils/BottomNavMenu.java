@@ -24,6 +24,7 @@ public class BottomNavMenu {
 
     private NavActivity caller;
     private Menu menu;
+    public MenuItem[] menuItems;
 
     private HashMap<Integer, Class> activityMap = new HashMap<Integer, Class>() {{
         put(R.id.navigation_view_events, ViewEventsActivity.class);
@@ -31,6 +32,8 @@ public class BottomNavMenu {
         put(R.id.navigation_my_activites, MyActivitiesActivity.class);
         put(R.id.navigation_notifications, NotificationActivity.class);
     }};
+
+    public HashMap<Class, MenuItem> classMap;
 
     public BottomNavMenu(NavActivity caller, BottomNavigationView v) {
         menu = v.getMenu();
@@ -47,20 +50,34 @@ public class BottomNavMenu {
             }
         }
 
+        menuItems = new MenuItem[menu.size()];
+        classMap = new HashMap<>();
         for (int i = 0; i < menu.size(); ++i) {
             MenuItem menuItem = menu.getItem(i);
-
+            menuItems[i] = menuItem;
             menuItem.setOnMenuItemClickListener((item) -> {
                 Activity callerAct = (Activity) caller;
-                if (!activityMap.containsKey(menuItem.getItemId())) return true;
-
-                Intent intent = new Intent(callerAct, activityMap.get(menuItem.getItemId()));
-                callerAct.startActivity(intent);
-                callerAct.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                caller.exit();
-
+                changeActivity(callerAct, menuItem);
                 return true;
             });
+        }
+    }
+
+    private void changeActivity(Activity caller, MenuItem menuItem) {
+        if (!activityMap.containsKey(menuItem.getItemId())) return;
+
+        Intent intent = new Intent(caller, activityMap.get(menuItem.getItemId()));
+        caller.startActivity(intent);
+        caller.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        ((NavActivity) caller).exit();
+    }
+
+    public void clickMenuItem(Activity activity, int itemId) {
+        for (MenuItem item : menuItems) {
+            if (itemId == item.getItemId()) {
+                changeActivity(activity, item);
+                return;
+            }
         }
     }
 

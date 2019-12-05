@@ -6,12 +6,14 @@
     <string name="event_sports_default_category">sports</string>
     <string name="event_sports_default_location">SUTD Sports Stadium</string>
     <string name="event_sports_default_image_path">some image path</string>
+    <string name="event_sports_default_telegram">https://t.me/joinchat/GE6VXBfUL8cw0U5E8hOFag</string>
 
     <!--Games Event Details -->
     <string name="event_games_default_title">Let\'s Play Some Games!</string>
     <string name="event_games_default_category">games</string>
     <string name="event_games_default_location">SUTD Hostel</string>
     <string name="event_games_default_image_path">some image path</string>
+    <string name="event_games_default_telegram">https://t.me/joinchat/GE6VXBfUL8cw0U5E8hOFag</string>
 
     <!--Eating Event Details -->
     <string name="event_eating_default_title">Let\'s Eat Together!</string>
@@ -19,6 +21,7 @@
     <string name="event_eating_default_location">SUTD Canteen!</string>
     <string name="event_eating_default_descrip">DSBJ!</string>
     <string name="event_eating_default_image_path">some image path</string>
+    <string name="event_eating_default_telegram">https://t.me/joinchat/GE6VXBfUL8cw0U5E8hOFag</string>
 
     <!--Music Event Details -->
     <string name="event_music_default_title">Let\'s go listen to bands!!</string>
@@ -26,10 +29,13 @@
     <string name="event_music_default_location">SUTD Hostel Pickup Point</string>
     <string name="event_music_default_descrip">Grab to concert!</string>
     <string name="event_music_default_image_path">some image path</string>
+    <string name="event_music_default_telegram">https://t.me/joinchat/GE6VXBfUL8cw0U5E8hOFag</string>
 
     <!--Shopping Event Details -->
     <string name="event_shopping_default_title">Let\'s go Shopping!</string>
     <string name="event_shopping_default_category">shopping</string>
     <string name="event_shopping_default_location">Changi City Point</string>
     <string name="event_shopping_default_image_path">some image path</string>
+    <string name="event_shopping_default_telegram">https://t.me/joinchat/GE6VXBfUL8cw0U5E8hOFag</string>
+
 </resources>

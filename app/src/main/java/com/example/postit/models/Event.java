@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.EditText;
 import com.example.postit.R;
 import com.example.postit.createevent.EventDetailRowView;
@@ -38,6 +39,7 @@ public class Event {
     private Date date;
     private Time time;
     private String location;
+    private String telegramGroup;
 
     private int ppl;
     private Integer maxPpl;
@@ -50,18 +52,24 @@ public class Event {
     private Uri webImgUrl;
 
     public Event() {
+        this.id = GenUtils.genUuid();
     }
 
     public Map toMap() {
         HashMap<String, String> map = new HashMap<String, String>();
+        map.put("creator", getCreator());
         map.put("category", getCategoryStr());
         map.put("title", getTitle());
-        map.put("date", getDate());
+        map.put("date_activity", getDate());
         map.put("time", getTime());
-        map.put("location", getLocation());
+        map.put("venue", getLocation());
+        map.put("ppl", getPplStr());
         map.put("max_ppl", String.valueOf(getPpl()));
-        map.put("descrip", getDescrip());
-        map.put("image_url", getWebImgUrl().toString());
+        map.put("description", getDescrip());
+        map.put("image_uri", getWebImgUrl().toString());
+        map.put("telegram_group", getTelegramGroup());
+        map.put("unq_id", getId());
+        Log.i("MYMAP", map.toString());
         return map;
     }
 
@@ -198,6 +206,10 @@ public class Event {
         return ppl;
     }
 
+    public String getPplStr() {
+        return String.valueOf(getPpl());
+    }
+
     public Event setPpl(int ppl) {
         this.ppl = ppl;
         return this;
@@ -235,6 +247,19 @@ public class Event {
     public Event setMaxPpl(int maxPpl) {
         this.maxPpl = maxPpl == -1 ? null : maxPpl;
         return this;
+    }
+
+    public String getTelegramGroup() {
+        return telegramGroup;
+    }
+
+    public Event setTelegramGroup(String telegramGroup) {
+        this.telegramGroup = telegramGroup;
+        return this;
+    }
+
+    public Event setTelegramGroup(InputSetter s) {
+        return setTelegramGroup(s.getInput());
     }
 
     public String getDescrip() {

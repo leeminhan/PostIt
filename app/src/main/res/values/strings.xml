@@ -28,7 +28,8 @@
     <string name="time_hint">Time HH:MM</string>
     <string name="location_hint">Meet-up Location</string>
     <string name="descrip_hint">Event Description</string>
-    <string name="attendees_hint">Max Attendees (Optional)</string>
+    <string name="attendees_hint">Max Attendees</string>
+    <string name="telegram_hint">Telegram Invite Link</string>
     <string name="image_change_text">Click on the image to change it</string>
     <string name="default_event_image_url">https://tmesystems.net/wp-content/uploads/2018/05/sutd-logo-300x180.jpg</string>
 

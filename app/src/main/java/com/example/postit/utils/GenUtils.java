@@ -17,6 +17,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class GenUtils {
     public enum DateFormat { STANDARD }
@@ -84,5 +85,9 @@ public class GenUtils {
 
     public static HashMap<String, Object> getMapFromObject(JSONObject obj) {
         return new Gson().fromJson(obj.toString(), HashMap.class);
+    }
+
+    public static String genUuid() {
+         return UUID.randomUUID().toString();
     }
 }

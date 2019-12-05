@@ -1,5 +1,7 @@
 package com.example.postit.requests;
 
+import android.util.Log;
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -14,6 +16,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EventRequests extends ActivityRequests {
     private static final String createEventEndpoint = App.getContext().getString(R.string.create_event_endpoint);
@@ -55,7 +58,6 @@ public class EventRequests extends ActivityRequests {
         // TODO: Replace Url with actual backend API Url
         final String url = String.format("%s%s", backendBaseUrl, createEventEndpoint);
         final JSONObject json = new JSONObject(event.toMap());
-
         JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, url, json, successL::onSuccess,
                 (VolleyError err) -> {
                     err.printStackTrace();
@@ -65,8 +67,8 @@ public class EventRequests extends ActivityRequests {
     }
 
     public static void getUserEvents(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
-        // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
-        final String url = getUserEventsEndpoint2;
+         final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
+//        final String url = getUserEventsEndpoint2;
         HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         final JSONObject json = new JSONObject(map);

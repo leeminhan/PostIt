@@ -115,6 +115,15 @@
                     app:onlyNumberInput="true"
                     android:orientation="horizontal"/>
 
+            <com.example.postit.createevent.EventDetailRowView
+                    android:id="@+id/event_telegram_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:rowField="@string/telegram_hint"
+                    app:rowImage="@drawable/ic_telegram_24px"
+                    app:onlyNumberInput="true"
+                    android:orientation="horizontal"/>
+
         </LinearLayout>
     </ScrollView>
     <TextView
