@@ -26,10 +26,10 @@ public class EventRequests extends ActivityRequests {
     private static final String getUserEventsEndpoint = App.getContext().getString(R.string.get_user_activities_endpoint);
 
     // TEMP root_link
-    private static final String getUserEventsEndpoint2 =  backendBaseUrl + App.getContext().getString(R.string.get_user_activities_endpoint2);
-    private static final String getEventDetailEndpoint_base = backendBaseUrl + App.getContext().getString(R.string.get_event_by_id_endpoint2);
-    private static final String getRecommendationEndpoint = backendBaseUrl + App.getContext().getString(R.string.get_user_recommendations_endpoint);
-    private static final String getUserRemindersEndpoint = backendBaseUrl+ App.getContext().getString(R.string.get_user_reminders);
+    private static final String getUserEventsEndpoint2 =  backendBaseUrl3 + App.getContext().getString(R.string.get_user_activities_endpoint2);
+    private static final String getEventDetailEndpoint_base = backendBaseUrl3 + App.getContext().getString(R.string.get_event_by_id_endpoint2);
+    private static final String getRecommendationEndpoint = backendBaseUrl3 + App.getContext().getString(R.string.get_user_recommendations_endpoint);
+    private static final String getUserRemindersEndpoint = backendBaseUrl3+ App.getContext().getString(R.string.get_user_reminders);
 
     public static void getEventsBackend() {
         getEventsBackend(null);
@@ -163,17 +163,13 @@ public class EventRequests extends ActivityRequests {
         map.put("username", username);
         final JSONObject json = new JSONObject(map);
 
-//        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, (JSONArray arr) -> {
-//            try {
-//                successL.onSuccess(processGetUserEvents(obj));
-//            } catch (Exception ex) {
-//                errorL.onError(ex, null);
-//            }
-//        }, (VolleyError err) -> {
-//            err.printStackTrace();
-//            errorL.onError(err, null);
-//        });
-//        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, successL::onSuccess,
+                (VolleyError err) -> {
+                    err.printStackTrace();
+                    errorL.onError(err, null);
+                });
+        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+
     }
 
     private static Event[] processGetUserEvents(JSONArray arr) {
