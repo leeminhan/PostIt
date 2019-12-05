@@ -75,7 +75,7 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
                         }
 
                         Event[] events = {event, event2, event3};
-//                        onGetEventBackend(categoryEnum, fragment, events);
+                        onGetEventBackend(categoryEnum, fragment, events);
                     });
         }
 

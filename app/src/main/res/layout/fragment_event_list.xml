@@ -127,29 +127,6 @@
                                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                                    android:orientation="horizontal">
         </androidx.recyclerview.widget.RecyclerView>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_marginTop="@dimen/event_listing_vertical_padding"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/event_listing_title_size"
-                android:text="@string/event_list_shopping_title"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/event_listing_vertical_padding"
-                android:textColor="@color/colorEventListSubtitle"
-                android:textSize="@dimen/event_listing_subtitle_size"
-                android:text="@string/event_list_shopping_subtitle"
-        />
-        <androidx.recyclerview.widget.RecyclerView android:id="@+id/recycler_shopping_list"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="wrap_content"
-                                                   app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                                   android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

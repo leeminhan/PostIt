@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.EventListViewHolder> {
 
     private Event[] events;
+    private EventListFragment fragment;
 
     public static class EventListViewHolder extends RecyclerView.ViewHolder {
         public ImageView image;
@@ -33,8 +34,9 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         }
     }
 
-    public EventListAdapter(Event[] events) {
+    public EventListAdapter(EventListFragment fragment, Event[] events) {
         this.events = events;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -57,9 +59,8 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
         eventListViewHolder.time.setText(timeText);
         eventListViewHolder.card.setOnClickListener((View v) -> {
             // TODO: replace with Aobos create event function
-            Intent openEventDetailsActivity = new Intent(eventListViewHolder.card.getContext(), EventDetailsActivity.class);
-            eventListViewHolder.card.getContext().startActivity(openEventDetailsActivity);
-            Toast.makeText(eventListViewHolder.card.getContext(), events[i].getTitle(), Toast.LENGTH_LONG).show();
+            Event.setCurrentEvent(events[i]);
+            fragment.changeFragment(new EventDetailsFragment());
         });
     }
 

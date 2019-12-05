@@ -44,7 +44,7 @@
                     android:value="com.example.postit.LoginActivity"/>
         </activity>
         <activity
-                android:name=".eventlisting.EventDetailsActivity"
+                android:name=".eventlisting.EventDetailsFragment"
                 android:parentActivityName=".eventlisting.ViewEventsActivity">
         </activity>
         <activity android:name=".createevent.CreateEventActivity"

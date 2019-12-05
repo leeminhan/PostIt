@@ -1,6 +1,7 @@
 package com.example.postit.eventlisting;
 
 import android.os.Bundle;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -70,20 +71,25 @@ public class EventListFragment extends Fragment implements FragmentTransition {
 
         switch(category) {
             case SPORTS:
-                sportsAdapter = new EventListAdapter(events);
+                sportsAdapter = new EventListAdapter(this, events);
                 sportsRecycler.setAdapter(sportsAdapter);
+                break;
             case GAMES:
-                gamesAdapter = new EventListAdapter(events);
+                gamesAdapter = new EventListAdapter(this, events);
                 gamesRecycler.setAdapter(gamesAdapter);
+                break;
             case EATING:
-                eatingAdapter = new EventListAdapter(events);
+                eatingAdapter = new EventListAdapter(this, events);
                 eatingRecycler.setAdapter(eatingAdapter);
+                break;
             case MUSIC:
-                musicAdapter = new EventListAdapter(events);
+                musicAdapter = new EventListAdapter(this, events);
                 musicRecycler.setAdapter(musicAdapter);
+                break;
             case SHOPPING:
-                shoppingAdapter = new EventListAdapter(events);
+                shoppingAdapter = new EventListAdapter(this, events);
                 shoppingRecycler.setAdapter(shoppingAdapter);
+                break;
 
         }
     }

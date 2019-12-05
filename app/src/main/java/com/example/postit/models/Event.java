@@ -23,6 +23,8 @@ public class Event {
         SPORTS, SHOPPING, GAMES, EATING, MUSIC, OTHERS
     }
 
+    private static Event current;
+
     public static HashMap<Category, String> categoryMapping = new HashMap<Category, String>() {{
        put(Category.SPORTS, "sports");
        put(Category.SHOPPING, "shopping");
@@ -76,6 +78,17 @@ public class Event {
     public Event(String title) {
         this();
         this.title = title;
+    }
+
+    public static Event getCurrentEvent() {
+        if (current == null) {
+            return new Event();
+        }
+        return current;
+    }
+
+    public static void setCurrentEvent(Event event) {
+        current = event;
     }
 
     public int getId() {
@@ -134,6 +147,11 @@ public class Event {
 
     public String getDate() {
         return date.toString();
+    }
+
+    public String getDateStr() {
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        return df.format(date);
     }
 
     public String getShortDate() {
