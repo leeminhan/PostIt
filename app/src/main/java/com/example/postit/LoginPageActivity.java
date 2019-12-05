@@ -22,6 +22,7 @@ public class LoginPageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
+        getSupportActionBar().hide();
 
         loginBtn = findViewById(R.id.loginBtn);
         signUpBtn = findViewById(R.id.signUpBtn);
@@ -33,6 +34,8 @@ public class LoginPageActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(getApplicationContext(), RegistrationPageActivity.class);
             startActivity(intent);
+            LoginPageActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         }
     });
 

@@ -11,7 +11,7 @@
         android:id="@+id/app_icon"
         android:layout_width="70sp"
         android:layout_height="70sp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="75dp"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -23,7 +23,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="152dp"
         android:fontFamily="@font/montserrat"
         android:text="PostIt"
         android:textColor="@color/colorPrimary"
@@ -35,35 +35,35 @@
 
     <Button
         android:id="@+id/loginBtn"
-        android:backgroundTint="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/colorPrimary"
         android:text="@string/login"
         android:textColor="@color/font_black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/signUpBtn"
-        android:backgroundTint="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
         android:layout_marginEnd="60dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/montserrat"
         android:text="@string/sign_up"
         android:textColor="@color/font_black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/emailAddress"
         android:layout_width="288dp"
         android:layout_height="43dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="300dp"
         android:drawableStart="@drawable/ic_email"
         android:ems="10"
         android:fontFamily="@font/montserrat"
@@ -80,7 +80,7 @@
         android:id="@+id/password"
         android:layout_width="288dp"
         android:layout_height="43dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/ic_password"
         android:ems="10"
         android:fontFamily="@font/montserrat"
