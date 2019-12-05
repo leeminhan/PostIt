@@ -220,7 +220,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
-        android:text="Select Favourite Activites"
+        android:text="Favourite Activites"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/colorPrimary"

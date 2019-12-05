@@ -91,7 +91,7 @@
             <com.example.postit.createevent.ImageCardView
                     android:id="@+id/others_card"
                     app:cardString="Others"
-                    app:cardDrawable="@drawable/ic_cal_24"
+                    app:cardDrawable="@drawable/ic_category_others"
                     app:cardBackgroundColor="@color/colorPrimary"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
