@@ -11,15 +11,14 @@
         android:id="@+id/nextBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/montserrat"
         android:text="@string/next_btn"
         android:textColor="@color/font_black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -69,10 +68,38 @@
         app:layout_constraintTop_toBottomOf="@+id/uploadProfileImageBtn" />
 
     <ImageButton
+        android:id="@+id/foodBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintEnd_toStartOf="@+id/musicBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shoppingBtn"
+        app:srcCompat="@drawable/category_food" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/event_games_default_category"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gamesBtn" />
+
+    <ImageButton
         android:id="@+id/sportsBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,13 +126,25 @@
         android:id="@+id/othersBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/rounded_button"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gamesBtn"
         app:srcCompat="@drawable/ic_category_others" />
+
+    <ImageButton
+        android:id="@+id/musicBtn"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
+        app:srcCompat="@drawable/category_music" />
 
     <TextView
         android:id="@+id/textView3"
@@ -123,50 +162,10 @@
         app:layout_constraintTop_toBottomOf="@+id/sportsBtn" />
 
     <ImageButton
-        android:id="@+id/foodBtn"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toStartOf="@+id/musicBtn"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoppingBtn"
-        app:srcCompat="@drawable/category_food" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/event_games_default_category"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamesBtn" />
-
-    <ImageButton
-        android:id="@+id/musicBtn"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sportsBtn"
-        app:srcCompat="@drawable/category_music" />
-
-    <ImageButton
         android:id="@+id/gamesBtn"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,7 +179,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
@@ -191,6 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="44dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/category_others"
         android:textAllCaps="true"
@@ -198,29 +198,13 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.692"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/othersBtn" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="@string/to_your_personalised_profile"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/category_food"
@@ -243,8 +227,23 @@
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/musicBtn" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/to_your_personalised_profile"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageView
         android:id="@+id/imageView"
