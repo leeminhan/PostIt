@@ -23,6 +23,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
+        getSupportActionBar().hide();
 
         newUserName = findViewById(R.id.newUserName);
         newPassword = findViewById(R.id.newPassword);
@@ -35,6 +36,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ProfileSetupActivity.class);
                 startActivity(intent);
+                RegistrationPageActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 

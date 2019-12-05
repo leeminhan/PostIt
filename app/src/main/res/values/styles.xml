@@ -10,6 +10,7 @@
         <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="actionBarSize">48dp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
     </style>
     <style name="BottomNavBarTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimaryDark</item>

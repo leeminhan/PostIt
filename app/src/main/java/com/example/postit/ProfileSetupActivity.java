@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 
 import com.example.postit.eventlisting.ViewEventsActivity;
 import com.example.postit.utils.GenUtils;
+import com.example.postit.utils.ReqUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,6 +46,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_preferences_setup);
+        getSupportActionBar().hide();
 
         uploadProfileImageBtn = findViewById(R.id.uploadProfileImageBtn);
         shoppingBtn = findViewById(R.id.shoppingBtn);
@@ -59,8 +61,9 @@ public class ProfileSetupActivity extends AppCompatActivity {
         HashMap<String, String> jsonParams = new HashMap<String, String>();
 
         //HardCode
-        jsonParams.put("username","profile_preferences");
-        jsonParams.put("password","profile_preferences");
+        jsonParams.put("username","preference");
+        jsonParams.put("password","preference");
+        jsonParams.put("preference","preference");
         jsonParams.put("telegram","tele");
 
 
@@ -110,28 +113,28 @@ public class ProfileSetupActivity extends AppCompatActivity {
         sportsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonParams.put("sports", "1");
+                jsonParams.put("preference", "sports");
             }
         });
 
         gamesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonParams.put("games", "1");
+                jsonParams.put("preference", "games");
             }
         });
 
         foodBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonParams.put("food", "1");
+                jsonParams.put("preference", "food");
             }
         });
 
         othersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonParams.put("others", "1");
+                jsonParams.put("preference", "others");
             }
         });
 
@@ -140,7 +143,35 @@ public class ProfileSetupActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Todo: Go to EventsMarketPlace
                 Intent intent = new Intent(getApplicationContext(), ViewEventsActivity.class);
-                startActivity(intent);            }
+                startActivity(intent);
+                ProfileSetupActivity.this.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+                url = "http://13.67.95.12:8080/auth/register";
+                Log.d("request", "error");
+                JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url, new JSONObject(jsonParams),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    Log.d("JSON",  "onResponse" + response.getString("title"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                //   Handle Error
+                                Log.d("Error","onErrorResponse:" + error.getMessage());
+                            }
+                        });
+
+                // Send Request
+                ReqUtil.getInstance(ProfileSetupActivity.this).addToRequestQueue(postRequest);
+//                requestQueue.add(postRequest);
+
+            }
         });
 
 
@@ -160,30 +191,6 @@ public class ProfileSetupActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-//        url = "http://13.67.95.12:8080/register";
-//        Log.d("request", "error");
-//        JsonObjectRequest postRequest = new JsonObjectRequest( Request.Method.POST, url,
-//                new JSONObject(jsonParams),
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            Log.d("JSON",  "onResponse" + response.getString("title"));
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        //   Handle Error
-//                        Log.d("Error","onErrorResponse:" + error.getMessage());
-//                    }
-//        });
-//
-//        requestQueue.add(postRequest);
     }
 
     @Override
