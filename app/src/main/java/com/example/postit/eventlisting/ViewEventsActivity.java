@@ -2,6 +2,7 @@ package com.example.postit.eventlisting;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import com.android.volley.VolleyError;
 import com.example.postit.models.Event;
 import com.example.postit.requests.EventRequests;
@@ -26,7 +27,6 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_view_events);
-
         navigation = (BottomNavigationView) findViewById(R.id.navbar_view_events);
         menu = new BottomNavMenu(this, navigation);
 
@@ -79,6 +79,12 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
                     });
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
