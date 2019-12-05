@@ -13,6 +13,7 @@ import com.example.postit.R;
 import com.example.postit.utils.BottomNavMenu;
 
 import java.text.ParseException;
+import java.util.Map;
 
 public class ViewEventsActivity extends AppCompatActivity implements BottomNavMenu.NavActivity {
     public static final String CURRENT_FRAGMENT = "CURRENT_FRAGMENT_VIEW_EVENT_ACTIVITY";
@@ -36,45 +37,47 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
                 .addToBackStack(null)
                 .commit();
 
+        for (Map.Entry<Event.Category, String> entry : Event.categoryMapping.entrySet()) {
+            String category = entry.getValue();
+            Event.Category categoryEnum = entry.getKey();
+            EventRequests.getEventsCategory(category, (Object events) -> onGetEventBackend(categoryEnum, fragment, (Event[]) events),
+                    (Exception err, Object obj) -> {
+                        Log.e(TAG, String.format("Failed to get events from backend, using defaults %s", category));
+                        Event event = new Event();
 
-        EventRequests.getEventsBackend((Object obj) -> onGetEventBackend(fragment, obj),
-                (Exception err, Object obj) -> {
-            Log.e(TAG, "Failed to get events from backend, using defaults");
-            Event event = new Event();
+                        try {
+                            event.setTitle("testing")
+                                    .setDate("12/12/2019")
+                                    .setTime("12:12")
+                                    .setWebImgUrl("https://static.toiimg.com/photo/64697339.cms");
+                        } catch (ParseException ex) {
+                            ex.printStackTrace();
+                        }
 
-            try {
-                event.setTitle("testing")
-                        .setDate("12/12/2019")
-                        .setTime("12:12")
-                        .setWebImgUrl("https://static.toiimg.com/photo/64697339.cms");
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+                        Event event2 = new Event();
+                        try {
+                            event2.setTitle("testing2")
+                                    .setDate("12/12/2219")
+                                    .setTime("12:12")
+                                    .setWebImgUrl("https://images.theconversation.com/files/279768/original/file-20190617-118505-9ov3gw.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip");
+                        } catch (ParseException ex) {
+                            ex.printStackTrace();
+                        }
 
-            Event event2 = new Event();
-            try {
-                event2.setTitle("testing2")
-                        .setDate("12/12/2219")
-                        .setTime("12:12")
-                        .setWebImgUrl("https://images.theconversation.com/files/279768/original/file-20190617-118505-9ov3gw.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip");
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+                        Event event3 = new Event();
+                        try {
+                            event3.setTitle("testing2")
+                                    .setDate("12/12/2219")
+                                    .setTime("12:12")
+                                    .setWebImgUrl("http://danielfooddiary.com/wp-content/uploads/2019/02/mynonna2.jpg");
+                        } catch (ParseException ex) {
+                            ex.printStackTrace();
+                        }
 
-            Event event3 = new Event();
-            try {
-                event3.setTitle("testing2")
-                        .setDate("12/12/2219")
-                        .setTime("12:12")
-                        .setWebImgUrl("http://danielfooddiary.com/wp-content/uploads/2019/02/mynonna2.jpg");
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
-
-            Event[] events = { event, event2, event3 };
-
-            fragment.setEvents(events);
-        });
+                        Event[] events = {event, event2, event3};
+//                        onGetEventBackend(categoryEnum, fragment, events);
+                    });
+        }
 
     }
 
@@ -83,8 +86,8 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
         finish();
     }
 
-    private void onGetEventBackend(EventListFragment fragment, Object res) {
-        fragment.setEvents((Event[]) res);
+    private void onGetEventBackend(Event.Category category, EventListFragment fragment, Event[] res) {
+        fragment.setEvents(category, res);
     }
 
 }

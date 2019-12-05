@@ -4,14 +4,15 @@ import android.util.Log;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.postit.App;
 import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.utils.GenUtils;
 import com.example.postit.utils.ReqUtil;
-import com.google.gson.JsonObject;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
@@ -46,6 +47,29 @@ public class EventRequests extends ActivityRequests {
         ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
     }
 
+    public static void getEventsCategory(String category) {
+        getEventsCategory(category, null);
+    }
+
+    public static void getEventsCategory(String category, RequestSuccessListener successL) {
+        getEventsCategory(category, successL, null);
+    }
+
+    public static void getEventsCategory(String category, RequestSuccessListener successL, RequestErrorListener errorL) {
+        final String url = String.format("%s%s%s%s", backendBaseUrl, getEventCategoryEndpoint, "/", category);
+        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, null, (JSONArray arr) -> {
+            try {
+                successL.onSuccess(processGetUserEvents(arr));
+            } catch (Exception ex) {
+                errorL.onError(ex, null);
+            }
+        }, (VolleyError err) -> {
+            err.printStackTrace();
+            errorL.onError(err, null);
+        });
+        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+    }
+
     public static void createEvent(Event event) {
         createEvent(event, null);
     }
@@ -73,40 +97,43 @@ public class EventRequests extends ActivityRequests {
         map.put("username", username);
         final JSONObject json = new JSONObject(map);
 
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, (JSONObject obj) -> {
-            try {
-                successL.onSuccess(processGetUserEvents(obj));
-            } catch (Exception ex) {
-                errorL.onError(ex, null);
-            }
-        }, (VolleyError err) -> {
-            err.printStackTrace();
-            errorL.onError(err, null);
-        });
-        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+//        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, (JSONArray arr) -> {
+//            try {
+//                successL.onSuccess(processGetUserEvents(obj));
+//            } catch (Exception ex) {
+//                errorL.onError(ex, null);
+//            }
+//        }, (VolleyError err) -> {
+//            err.printStackTrace();
+//            errorL.onError(err, null);
+//        });
+//        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
     }
 
-    private static Event[] processGetUserEvents(JSONObject res) {
-        JSONObject[] objArr = GenUtils.getArrayFromObject(res);
-        Event[] events = new Event[objArr.length];
+    private static Event[] processGetUserEvents(JSONArray arr) {
+//        JSONArray arr = GenUtils.JSONObjectToArr(jsonObj);
+        Event[] events = new Event[arr.length()];
         try {
-            for (int i = 0; i < objArr.length; ++i) {
-                JSONObject obj = objArr[i];
+            for (int i = 0; i < arr.length(); ++i) {
+                JSONObject obj = (JSONObject) arr.get(i);
                 HashMap<String, Object> map = GenUtils.getMapFromObject(obj);
-                Event event = new Event().setId((String) map.get("unq_id"))
+                Event event = new Event().setId((int)(double) map.get("unq_id"))
+                        .setTitle((String) map.get("title"))
                         .setCategory((String) map.get("category"))
-                        .setDate((String) map.get("date"))
+                        .setDate((String) map.get("date_activity"))
                         .setCreator((String) map.get("creator"))
-                        .setLocation((String) map.get("location"))
-                        .setPpl(Integer.parseInt((String) map.get("ppl")))
-                        .setImagePath((String) map.get("image_uri"))
+                        .setLocation((String) map.get("venue"))
+                        .setPpl((int)(double) map.get("ppl"))
+                        .setTelegramGroup((String) map.get("telegram_group"))
                         .setDescrip((String) map.get("description"))
-                        .setMaxPpl(Integer.parseInt((String) map.get("max_ppl")));
+                        .setMaxPpl((int)(double) map.get("max_ppl"))
+                        .setWebImgUrl((String) map.get("image_uri"));
                 events[i] = event;
             }
-        } catch (ParseException | NullPointerException ex) {
+        } catch (ParseException | NullPointerException | JSONException ex) {
             ex.printStackTrace();
         }
+
         return events;
 
     }

@@ -64,19 +64,26 @@ public class EventListFragment extends Fragment implements FragmentTransition {
                 .commit();
     }
 
-    public void setEvents(Event[] events) {
+    public void setEvents(Event.Category category, Event[] events) {
 
-        sportsAdapter = new EventListAdapter(events);
-        gamesAdapter = new EventListAdapter(events);
-        eatingAdapter = new EventListAdapter(events);
-        musicAdapter = new EventListAdapter(events);
-        shoppingAdapter = new EventListAdapter(events);
+        switch(category) {
+            case SPORTS:
+                sportsAdapter = new EventListAdapter(events);
+                sportsRecycler.setAdapter(sportsAdapter);
+            case GAMES:
+                gamesAdapter = new EventListAdapter(events);
+                gamesRecycler.setAdapter(gamesAdapter);
+            case EATING:
+                eatingAdapter = new EventListAdapter(events);
+                eatingRecycler.setAdapter(eatingAdapter);
+            case MUSIC:
+                musicAdapter = new EventListAdapter(events);
+                musicRecycler.setAdapter(musicAdapter);
+            case SHOPPING:
+                shoppingAdapter = new EventListAdapter(events);
+                shoppingRecycler.setAdapter(shoppingAdapter);
 
-        sportsRecycler.setAdapter(sportsAdapter);
-        gamesRecycler.setAdapter(gamesAdapter);
-        eatingRecycler.setAdapter(eatingAdapter);
-        musicRecycler.setAdapter(musicAdapter);
-        shoppingRecycler.setAdapter(shoppingAdapter);
+        }
     }
 
 }

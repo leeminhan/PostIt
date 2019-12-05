@@ -10,14 +10,14 @@ import androidx.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class GenUtils {
     public enum DateFormat { STANDARD }
@@ -87,7 +87,22 @@ public class GenUtils {
         return new Gson().fromJson(obj.toString(), HashMap.class);
     }
 
-    public static String genUuid() {
-         return UUID.randomUUID().toString();
+    public static int genRandomInt() {
+         return new Random().nextInt(10000);
+    }
+
+    public static JSONArray JSONObjectToArr(JSONObject obj) {
+        Iterator x = obj.keys();
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            while (x.hasNext()){
+                String key = (String) x.next();
+                jsonArray.put(obj.get(key));
+            }
+        } catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+        return jsonArray;
     }
 }

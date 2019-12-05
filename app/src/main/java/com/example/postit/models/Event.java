@@ -6,33 +6,34 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.EditText;
-import com.example.postit.R;
 import com.example.postit.createevent.EventDetailRowView;
 import com.example.postit.utils.GenUtils;
 
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Event {
     public enum Category {
-        SPORTS, SHOPPING, GAMES, FOOD, MUSIC, OTHERS
+        SPORTS, SHOPPING, GAMES, EATING, MUSIC, OTHERS
     }
 
-    private HashMap<Category, String> categoryMapping = new HashMap<Category, String>() {{
+    public static HashMap<Category, String> categoryMapping = new HashMap<Category, String>() {{
        put(Category.SPORTS, "sports");
        put(Category.SHOPPING, "shopping");
        put(Category.GAMES, "games");
-       put(Category.FOOD, "food");
+       put(Category.EATING, "eating");
        put(Category.MUSIC, "music");
        put(Category.OTHERS, "others");
     }};
 
     private String title;
-    private String id;
+    private int id;
     private String creator;
 
     private Category category;
@@ -52,7 +53,7 @@ public class Event {
     private Uri webImgUrl;
 
     public Event() {
-        this.id = GenUtils.genUuid();
+        this.id = GenUtils.genRandomInt();
     }
 
     public Map toMap() {
@@ -66,10 +67,9 @@ public class Event {
         map.put("ppl", getPplStr());
         map.put("max_ppl", String.valueOf(getPpl()));
         map.put("description", getDescrip());
-        map.put("image_uri", getWebImgUrl().toString());
         map.put("telegram_group", getTelegramGroup());
-        map.put("unq_id", getId());
-        Log.i("MYMAP", map.toString());
+        map.put("unq_id", String.valueOf(getId()));
+        map.put("image_uri", getWebImgUrl().toString());
         return map;
     }
 
@@ -78,11 +78,11 @@ public class Event {
         this.title = title;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public Event setId(String id) {
+    public Event setId(int id) {
         this.id = id;
         return this;
     }
@@ -151,7 +151,17 @@ public class Event {
     }
 
     public Event setDate(String date) throws ParseException {
-        return setDate(GenUtils.getValidDate(date, GenUtils.DateFormat.STANDARD));
+        try {
+            return setDate(GenUtils.getValidDate(date, GenUtils.DateFormat.STANDARD));
+        } catch (ParseException ex) {
+            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+            Date datem = df.parse(date);
+            SimpleDateFormat newDf = new SimpleDateFormat("dd/MM/yyyy");
+            setDate(newDf.format(datem));
+            SimpleDateFormat newDfTime = new SimpleDateFormat("HH:mm");
+            setTime(newDfTime.format(datem));
+            return this;
+        }
     }
 
     public Event setDate(InputSetter s) throws InvalidInputException {
@@ -281,11 +291,13 @@ public class Event {
 
     public Event setImagePath(Uri imagePath) {
         this.imagePath = imagePath;
+        Log.e("setimg", imagePath.toString());
         return this;
     }
 
     public Event setImagePath(String imagePathStr) throws NullPointerException {
         return setImagePath(Uri.parse(imagePathStr));
+
     }
 
     public Event setImagePath(Context context, int drawableId) {

@@ -3,7 +3,7 @@
     <string name="backend_base_url">http://13.67.95.12:8080</string>
     <string name="backend_base_url2">https://postman-echo.com/post</string>
     <string name="create_event_endpoint">/create</string>
-    <string name="get_event_category_endpoint">/home/actListCategories/category</string>
+    <string name="get_event_category_endpoint">/home/actListCategories</string>
     <string name="get_user_activities_endpoint">/myPage/username</string>
     <string name="get_event_by_id_endpoint">/mPage/id</string>
     <string name="get_user_activities_endpoint2">https://api.myjson.com/bins/1bemb0</string>
