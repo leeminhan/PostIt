@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +25,11 @@ public class EventRequests extends ActivityRequests {
     private static final String getEventCategoryEndpoint = App.getContext().getString(R.string.get_event_category_endpoint);
     private static final String getUserEventsEndpoint = App.getContext().getString(R.string.get_user_activities_endpoint);
 
-    // TEMP
-    private static final String getUserEventsEndpoint2 = App.getContext().getString(R.string.get_user_activities_endpoint2);
-
+    // TEMP root_link
+    private static final String getUserEventsEndpoint2 =  backendBaseUrl + App.getContext().getString(R.string.get_user_activities_endpoint2);
+    private static final String getEventDetailEndpoint_base = backendBaseUrl + App.getContext().getString(R.string.get_event_by_id_endpoint2);
+    private static final String getRecommendationEndpoint = backendBaseUrl + App.getContext().getString(R.string.get_user_recommendations_endpoint);
+    private static final String getUserRemindersEndpoint = backendBaseUrl+ App.getContext().getString(R.string.get_user_reminders);
 
     public static void getEventsBackend() {
         getEventsBackend(null);
@@ -91,8 +94,71 @@ public class EventRequests extends ActivityRequests {
     }
 
     public static void getUserEvents(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
-         final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
-//        final String url = getUserEventsEndpoint2;
+        // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
+        final String url = getUserEventsEndpoint2 + username;
+        HashMap<String, String> map = new HashMap<>();
+        map.put("username", username);
+        final JSONObject json = new JSONObject(map);
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, json, successL::onSuccess,
+                (VolleyError err) -> {
+                    err.printStackTrace();
+                    errorL.onError(err, null);
+                });
+        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+    }
+
+    public static void getUserReminders(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
+        // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
+        final String url = getUserRemindersEndpoint + username;
+        System.out.println("The user reminder URL is:!@#$");
+        System.out.println(url);
+        //
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("username", username);
+        final JSONObject json = new JSONObject(map);
+
+        JSONArray json2 = new JSONArray();
+        json2.put(json);
+
+        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, json2, successL::onSuccess,
+                (VolleyError err) -> {
+                    err.printStackTrace();
+                    errorL.onError(err, null);
+                });
+        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+
+    }
+
+    public static void getEventDetails(Double id, RequestSuccessListener successL, RequestErrorListener errorL) throws JSONException
+
+    {
+        Integer id2 = id.intValue();
+        // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
+        final String url = getEventDetailEndpoint_base + id2.toString();
+        System.out.println("URL called is");
+        System.out.println(url);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", id2.toString());
+        final JSONObject json = new JSONObject(map);
+
+        JSONArray json2 = new JSONArray();
+        json2.put(json);
+
+        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, json2, successL::onSuccess,
+                (VolleyError err) -> {
+                    err.printStackTrace();
+                    errorL.onError(err, null);
+                });
+        ReqUtil.getInstance(App.getContext()).addToRequestQueue(req);
+    }
+
+    public static void getUserRecommendations(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
+        // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
+        final String url = getRecommendationEndpoint + username;
+        System.out.println("recommendation url called is!!@@!!@@");
+        System.out.println(url);
         HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         final JSONObject json = new JSONObject(map);

@@ -1,12 +1,15 @@
 package com.example.postit.myactivities;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +23,11 @@ import com.android.volley.VolleyError;
 import com.example.postit.R;
 import com.example.postit.requests.EventRequests;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.Map;
@@ -28,145 +35,20 @@ import java.util.Map;
 
 public class Fragment2 extends Fragment {
 
-//    public class Tester2 extends AsyncTask<String, Void, String> {
-//
-//        LinearLayout linlay;
-//
-//        public String doInBackground(String... urls){
-//            RestTemplate restTemplate = new RestTemplate();
-//            String fooResourceUrl = urls[0];
-//            //String fooResourceUrl = "http://13.67.95.12:8080/home";
-//            ResponseEntity<String> response
-//                    = restTemplate.getForEntity(fooResourceUrl + "/", String.class);
-//            //assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-//            String jsonString  = response.getBody() ;
-//            ObjectMapper mapper = new ObjectMapper();
-//            return jsonString;
-//        }
-//
-//        protected void onPostExecute(String jsonString){
-//            System.out.println("Successfully finished running HTTP");
-//            System.out.println(jsonString);
-//
-//            //ArrayList<Map<String, String>> data = gson.fromJson(reader, type);
-//
-//            ArrayList<Map<String, Object>> data = new Gson().fromJson(
-//                    jsonString, new TypeToken<ArrayList<Map<String, Object>>>() {}.getType()
-//            );
-//
-//            try{
-//                for (int i = 0; i <data.size(); i++) {
-//                    String title = (String)data.get(i).get("title");
-//                    String date = (String)data.get(i).get("date_activity");
-//                    //Integer num_ppl = (Integer)data.get(i).get("people");
-//                    //Integer max_ppl = (Integer)data.get(i).get("max_people");
-//                    String imguri = (String) data.get(i).get("imageURI");
-//                    String location = (String) data.get(i).get("location");
-//                    String category = (String)data.get(i).get("category");
-//                    String time = (String)data.get(i).get("time");
-//                    String organizer = (String)data.get(i).get("organizer");
-//
-//
-//                    CardView cardView = new CardView(getActivity());
-//                    CardView.LayoutParams params = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT,
-//                            CardView.LayoutParams.MATCH_PARENT);
-//                    params.setMargins(convert(30), convert(10), convert(30), 0);
-//
-//
-//                    cardView.setCardBackgroundColor(Color.parseColor("#91C2E2"));
-//                    cardView.setLayoutParams(params);
-//                    cardView.setRadius(0);
-//
-//                    //add textview for act name to card
-//                    TextView textView = new TextView(getActivity());
-//                    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
-//                            LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-//                    params2.setMargins(convert(20), convert(10), 0, convert(10));
-//                    textView.setLayoutParams(params2);
-//                    textView.setText(title);
-//
-//                    textView.setTextColor(Color.parseColor("#303F9F"));
-//
-//                    cardView.addView(textView);
-//
-//                    //add image to card
-//
-//
-//                    ImageView imageView = new ImageView(getActivity());
-//                    LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(85),
-//                            convert(90));
-//                    params3.setMargins(convert(25), convert(40), 0, convert(10));
-//                    imageView.setLayoutParams(params3);
-//
-//                    getImage task = new getImage();
-//                    task.imageView = imageView;
-//                    task.execute(imguri);
-//
-//                    //imageView.setImageResource(R.drawable.sutdmap);
-//
-//                    cardView.addView(imageView);
-//
-//                    /*//add reject button to card
-//                    Button b1 = new Button(getActivity());
-//
-//                    LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
-//                            (LinearLayout.LayoutParams.WRAP_CONTENT));
-//
-//                    params4.setMargins(convert(270), convert(10), convert(20), convert(10));
-//                    b1.setLayoutParams(params4);
-//                    b1.setText("Reject");
-//                    cardView.addView(b1);*/
-//
-//                    //add event description to card
-//
-//                    TextView eventdescp = new TextView(getActivity());
-//                    LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(convert(177),
-//                            convert(70));
-//                    params5.setMargins(convert(154), convert(58), 0, 10);
-//                    eventdescp.setLayoutParams(params5);
-//                    eventdescp.setText("Date :" + date + "\n" +
-//                            "Location :"+location+ "\n" +
-//                            "Organizer : Shin-chan\n" +
-//                            "Category :" + category);
-//                    cardView.addView(eventdescp);
-//
-//                    //add accept button to card
-//
-//                    /*Button b2 = new Button(getActivity());
-//                    LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
-//                            (LinearLayout.LayoutParams.WRAP_CONTENT));
-//
-//                    params6.setMargins(convert(160), convert(10), convert(40), convert(10));
-//                    b2.setLayoutParams(params6);
-//                    b2.setText("Accept");
-//                    cardView.addView(b2); */
-//
-//                    //add card to linearlayout
-//                    linlay.addView(cardView);
-//
-//
-//                }
-//            }catch(Exception e){
-//                System.out.println(e.toString());
-//
-//            }
-//        }
-//
-//    }
-
     public int convert(int a) {
         return ((int) (a * (getActivity()).getResources().getDisplayMetrics().density));
     }
 
-    private static final String TAG = "Fragment1";
+    private static final String TAG = "Fragment2";
 
     LinearLayout linearLayout;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_myactivities, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+        View view = inflater.inflate(R.layout.fragment_myactivities, container, false);
+
+        //View view = findViewById(R.layout.activity_myactivities);
 
         linearLayout = view.findViewById(R.id.titlelinear);
 
@@ -195,91 +77,134 @@ public class Fragment2 extends Fragment {
 
         String username = "mihir"; // TODO: Remove hardcoded username
         EventRequests.getUserEvents(username, (Object obj) -> {
-            JsonObject res = (JsonObject) obj;
+            try{
+                JSONObject res = (JSONObject) obj;
+            }catch(Exception e){
+                System.out.println("JSON Conversion failed in fragment 2 starting");
+            }
+            JSONObject res = (JSONObject) obj;
+            System.out.println("Successfull MyActivity Response of Jsonlist");
             String jsonString = res.toString();
+            System.out.println(jsonString);
 
-            ArrayList<Map<String, Object>> data = new Gson().fromJson(
-                    jsonString, new TypeToken<ArrayList<Map<String, Object>>>() {}.getType()
+            Map<String, ArrayList> data_ids = new Gson().fromJson(
+                    jsonString, new TypeToken<Map<String, ArrayList>>() {}.getType()
             );
 
+            //ArrayList<Map<String, Object>> data = new Gson().fromJson(
+            //                    jsonString, new TypeToken<Map<String, ArrayList>>() {}.getType()
+            //            );
+            //
+            //
+            //
+
             try{
-                for (int i = 0; i <data.size(); i++) {
-                    String title = (String)data.get(i).get("title");
-                    String date = (String)data.get(i).get("date_activity");
-                    //Integer num_ppl = (Integer)data.get(i).get("people");
-                    //Integer max_ppl = (Integer)data.get(i).get("max_people");
-                    String imguri = (String) data.get(i).get("imageURI");
-                    String location = (String) data.get(i).get("location");
-                    String category = (String)data.get(i).get("category");
-                    String time = (String)data.get(i).get("time");
-                    String organizer = (String)data.get(i).get("organizer");
+                ArrayList ids = data_ids.get(username);
+                for (int i = 0; i <ids.size(); i++) {
+
+                    Double id = (Double)(ids.get(i));
+                    System.out.println("This is the id");
+                    System.out.println(id);
+                    EventRequests.getEventDetails(id, (Object obj2) -> {
+                        JSONArray res2 = (JSONArray) obj2;
+
+                        try {
+                            JSONObject data = res2.getJSONObject(0);
+
+                            String title = (String) data.getString("title");
+                            String date = (String) data.getString("date_activity");
+                            //Integer num_ppl = (Integer)data.get(i).get("people");
+                            //Integer max_ppl = (Integer)data.get(i).get("max_people");
+                            String imguri = (String) data.getString("image_uri");
+                            System.out.println("Image Link!!!");
+                            System.out.println(imguri);
+                            String location = (String) data.getString("venue");
+                            String category = (String) data.getString("category");
+                            //String time = (String)data.get("time");
+                            String time = "18:45";
+                            String organizer = (String) data.getString("creator");
+                        /*
+                        String jsonString2 = res2.to();
+                        System.out.println(jsonString2);
+
+                        ArrayList<Map<String, Object>> datalist = new Gson().fromJson(
+                                jsonString2, new TypeToken<ArrayList<Map<String, Object>>>() {}.getType()
+                        );
+
+                        Map<String, Object> data=datalist.get(0);
+                        String title = (String)data.get("title");
+                        String date = (String)data.get("date_activity");
+                        //Integer num_ppl = (Integer)data.get(i).get("people");
+                        //Integer max_ppl = (Integer)data.get(i).get("max_people");
+                        String imguri = (String) data.get("image_uri");
+                        System.out.println("Image Link!!!");
+                        System.out.println(imguri);
+                        String location = (String) data.get("venue");
+                        String category = (String)data.get("category");
+                        //String time = (String)data.get("time");
+                        String time = "18:45";
+                        String organizer = (String)data.get("creator");
+
+                         */
 
 
-                    CardView cardView = new CardView(getActivity());
-                    CardView.LayoutParams params = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT,
-                            CardView.LayoutParams.MATCH_PARENT);
-                    params.setMargins(convert(30), convert(10), convert(30), 0);
+                            CardView cardView = new CardView(getActivity());
+                            CardView.LayoutParams params = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT,
+                                    convert(130));
+                            params.setMargins(convert(10), convert(10), convert(10), 0);
 
 
-                    cardView.setCardBackgroundColor(Color.parseColor("#91C2E2"));
-                    cardView.setLayoutParams(params);
-                    cardView.setRadius(0);
+                            cardView.setCardBackgroundColor(Color.parseColor("#91C2E2"));
+                            cardView.setLayoutParams(params);
+                            cardView.setRadius(15);
 
-                    //add textview for act name to card
-                    TextView textView = new TextView(getActivity());
-                    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                            //add textview for act name to card
+                            TextView textView = new TextView(getActivity());
+                            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
+                                    LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                    params2.setMargins(convert(20), convert(10), 0, convert(10));
-                    textView.setLayoutParams(params2);
-                    textView.setText(title);
+                            params2.setMargins(convert(22), convert(11), 0, convert(10));
+                            textView.setLayoutParams(params2);
 
-                    textView.setTextColor(Color.parseColor("#303F9F"));
+                            textView.setText(title);
+                            textView.setTextSize(24);
+                            textView.setTypeface(null, Typeface.BOLD);
+                            textView.setTextColor(Color.parseColor("#303F9F"));
 
-                    cardView.addView(textView);
+                            cardView.addView(textView);
 
-                    //add image to card
+                            //add image to card
+                            ImageView imageView = new ImageView(getActivity());
+                            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(86),
+                                    convert(82)); //left, top, right, bottom
+                            params3.setMargins(convert(255), convert(19), 0, convert(10));
+                            imageView.setLayoutParams(params3);
 
+                            com.example.postit.notifications.getImage task = new com.example.postit.notifications.getImage();
+                            task.imageView = imageView;
+                            task.execute(imguri);
 
-                    ImageView imageView = new ImageView(getActivity());
-                    LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(85),
-                            convert(90));
-                    params3.setMargins(convert(25), convert(40), 0, convert(10));
-                    imageView.setLayoutParams(params3);
+                            cardView.addView(imageView);
 
-                    com.example.postit.notifications.getImage task = new com.example.postit.notifications.getImage();
-                    task.imageView = imageView;
-                    task.execute(imguri);
+                            //add event description to card
+                            TextView eventdescp = new TextView(getActivity());
+                            LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(convert(177),
+                                    convert(70));
+                            params5.setMargins(convert(22), convert(44), 0, 10);
+                            eventdescp.setLayoutParams(params5);
 
-                    //imageView.setImageResource(R.drawable.sutdmap);
+                            String sourcedate = "<b>Date:</b> " + date + "<br/>";
+                            String sourceorganizer = time + " || " + "<b>"+organizer+"</b> " + "<br/>";
+                            String sourcelocation = "<b>Location:</b> " + location + "<br/>";
+                            String sourcecategory = "<b>Category:</b> " + category;
 
-                    cardView.addView(imageView);
+                            eventdescp.setText(Html.fromHtml(sourcedate  +
+                                    sourceorganizer +
+                                    sourcelocation +
+                                    sourcecategory));
+                            cardView.addView(eventdescp);
 
-                    /*//add reject button to card
-                    Button b1 = new Button(getActivity());
-
-                    LinearLayout.LayoutParams params4 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
-                            (LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                    params4.setMargins(convert(270), convert(10), convert(20), convert(10));
-                    b1.setLayoutParams(params4);
-                    b1.setText("Reject");
-                    cardView.addView(b1);*/
-
-                    //add event description to card
-
-                    TextView eventdescp = new TextView(getActivity());
-                    LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(convert(177),
-                            convert(70));
-                    params5.setMargins(convert(154), convert(58), 0, 10);
-                    eventdescp.setLayoutParams(params5);
-                    eventdescp.setText("Date :" + date + "\n" +
-                            "Location :"+location+ "\n" +
-                            "Organizer : Shin-chan\n" +
-                            "Category :" + category);
-                    cardView.addView(eventdescp);
-
-                    //add accept button to card
+                            //add accept button to card
 
                     /*Button b2 = new Button(getActivity());
                     LinearLayout.LayoutParams params6 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
@@ -290,8 +215,18 @@ public class Fragment2 extends Fragment {
                     b2.setText("Accept");
                     cardView.addView(b2); */
 
-                    //add card to linearlayout
-                    linearLayout.addView(cardView);
+                            //add card to linearlayout
+                            linearLayout.addView(cardView);
+                            Log.i(TAG, "Added notification");
+
+
+                        }catch(Exception e1){
+                            System.out.println("Failed to convert JSONObject");
+                        }
+                            }, (Exception err, Object objn) -> {
+                        Log.e(TAG, err.getMessage());
+                    });
+
 
 
                 }
@@ -300,8 +235,12 @@ public class Fragment2 extends Fragment {
 
             }
 
+
+
+            //end of the outer HTTP Call, keep end of inner one before this
         }, (Exception err, Object obj) -> {
             Log.e(TAG, err.getMessage());
+
         });
 
 

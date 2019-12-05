@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notifications_scrollview"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:orientation="vertical"
+    tools:context=".OneD">
+    <!-- app:layout_constraintBottom_toTopOf="@id/navbar_myactivities" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id = "@+id/titlelinear_noti">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="0dp"
+            android:background="#91C2E2"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="@android:dimen/notification_large_icon_height">
+
+            <TextView
+                android:id="@+id/topViewNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Notifications"
+                android:textColor="#303F9F"
+                android:textSize="20sp"
+                android:textStyle="bold"
+
+                app:fontFamily="sans-serif-condensed-medium" />
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="35dp"
+                android:background="#E9EDF1"
+                android:clickable="true" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

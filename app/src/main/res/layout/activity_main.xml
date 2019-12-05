@@ -4,15 +4,22 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".myactivities.MyActivitiesActivity">
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager">
 
-        android:id="@+id/viewpager_container_notifications"/>
+    </androidx.viewpager.widget.ViewPager>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+</androidx.constraintlayout.widget.ConstraintLayout>
+   <!-- <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navbar_notifications"
         app:labelVisibilityMode="labeled"
         android:layout_width="0dp"
@@ -21,8 +28,9 @@
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
         android:theme="@style/BottomNavBarTheme"
+       app:layout_constraintTop_toBottomOf="@id/create_event_container"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation"/>
+        app:menu="@menu/navigation"/> -->
 </androidx.constraintlayout.widget.ConstraintLayout>

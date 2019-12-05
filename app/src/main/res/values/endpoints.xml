@@ -6,6 +6,8 @@
     <string name="get_event_category_endpoint">/home/actListCategories</string>
     <string name="get_user_activities_endpoint">/myPage/username</string>
     <string name="get_event_by_id_endpoint">/mPage/id</string>
-    <string name="get_user_activities_endpoint2">https://api.myjson.com/bins/1bemb0</string>
-    <string name="get_event_by_id_endpoint2">https://api.myjson.com/bins/1bemb0</string>
+    <string name="get_user_activities_endpoint2">myPage/</string>
+    <string name="get_event_by_id_endpoint2">myPage/getAct/</string>
+    <string name="get_user_recommendations_endpoint">bert/predict/</string>
+    <string name="get_user_reminders">notification/</string>
 </resources>
