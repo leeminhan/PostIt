@@ -387,7 +387,7 @@ public class Fragment1 extends Fragment {
 
 }
             }catch(Exception e){
-                    System.out.println(e.toString());
+//                    System.out.println(e.toString());
 
                     }
 
@@ -395,7 +395,7 @@ public class Fragment1 extends Fragment {
 
                     //end of the outer HTTP Call, keep end of inner one before this
                     }, (Exception err, Object obj) -> {
-                    Log.e(TAG, err.getMessage());
+//                    Log.e(TAG, err.getMessage());
                     });
 
 
