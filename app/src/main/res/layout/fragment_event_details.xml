@@ -1,227 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                   android:background="@color/colorBackground1"
-                                                   android:orientation="vertical"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   tools:context=".createevent.ChooseCategoryFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground1"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".createevent.ChooseCategoryFragment">
 
-    <ScrollView
-            android:id="@+id/svEventDetailsScrollview"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tvJoinTelegramGroupButton">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:descendantFocusability="beforeDescendants"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:paddingLeft="@dimen/create_event_layout_padding"
-                android:paddingRight="@dimen/create_event_layout_padding">
-
-            <TextView
-                    android:id="@+id/tvEventDetailsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/event_title_size"
-                    android:paddingBottom="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:maxLines="1"
-                    android:singleLine="true"/>
-
-            <ImageView
-                    android:id="@+id/ivEventDetailsImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="centerCrop"
-                    android:adjustViewBounds="true"
-                    android:paddingLeft="@dimen/create_event_image_padding"
-                    android:paddingRight="@dimen/create_event_image_padding"
-                    android:paddingTop="@dimen/create_event_image_padding"
-                    android:paddingBottom="@dimen/create_event_image_padding"
-                    android:src="@drawable/default_event_picture"/>
-
-            <LinearLayout
-                    android:id="@+id/llEventDetailsCategory"
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <ImageView
-                        android:src="@drawable/ic_category_24px"
-                        android:tint="@color/colorPrimaryDark"
-                        android:layout_weight="1"
-                        android:layout_width="70dp"
-                        android:layout_height="50dp"/>
-
-                <TextView
-                        android:id="@+id/tvEventDetailsCategory"
-                        android:hint="Category"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <!--            <com.example.postit.createevent.EventDetailRowView-->
-            <!--                android:id="@+id/rvEventDetailsCategory"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                app:rowField="@string/category_hint"-->
-            <!--                app:rowImage="@drawable/ic_category_24px"-->
-            <!--                android:orientation="horizontal"/>-->
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                <LinearLayout
-                        android:id="@+id/llEventDetailsDate"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                    <ImageView
-                            android:src="@drawable/ic_cal_24"
-                            android:tint="@color/colorPrimaryDark"
-                            android:layout_weight="1"
-                            android:layout_width="70dp"
-                            android:layout_height="50dp"/>
-
-                    <TextView
-                            android:id="@+id/tvEventDetailsDate"
-                            android:hint="Date DD/MM/YY"
-                            android:textSize="18dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-
-                <LinearLayout
-                        android:id="@+id/llEventDetailsTime"
-                        android:weightSum="2"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                    <ImageView
-                            android:src="@drawable/ic_access_time_24px"
-                            android:tint="@color/colorPrimaryDark"
-                            android:layout_weight="1"
-                            android:layout_width="70dp"
-                            android:layout_height="50dp"/>
-
-                    <TextView
-                            android:id="@+id/tvEventDetailsTime"
-                            android:hint="HH:MM"
-                            android:textSize="18dp"
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="@android:color/black"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:id="@+id/llEventDetailsLocation"
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                <ImageView
-                        android:src="@drawable/ic_location_pin"
-                        android:tint="@color/colorPrimaryDark"
-                        android:layout_weight="1"
-                        android:layout_width="70dp"
-                        android:layout_height="50dp" />
-
-                <TextView
-                        android:id="@+id/tvEventDetailsLocation"
-                        android:hint="Location"
-                        android:textSize="18dp"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <!--            <com.example.postit.createevent.EventDetailRowView-->
-            <!--                android:id="@+id/rvEventDetailsLocation"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                app:rowField="@string/location_hint"-->
-            <!--                app:rowImage="@drawable/ic_location_pin"-->
-            <!--                android:orientation="horizontal"/>-->
-
-            <LinearLayout
-                    android:id="@+id/llEventDetailsDescription"
-                    android:weightSum="2"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                <ImageView
-                        android:src="@drawable/ic_description_24px"
-                        android:tint="@color/colorPrimaryDark"
-                        android:layout_weight="1"
-                        android:layout_width="70dp"
-                        android:layout_height="50dp" />
-
-                <TextView
-                        android:id="@+id/tvEventDetailsDescription"
-                        android:hint="Description"
-                        android:textSize="18dp"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+    <ImageView
+        android:id="@+id/ivEventDetailsImage"
+        android:layout_width="288dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="80dp"
+        android:adjustViewBounds="true"
+        android:paddingLeft="@dimen/create_event_image_padding"
+        android:paddingTop="@dimen/create_event_image_padding"
+        android:paddingRight="@dimen/create_event_image_padding"
+        android:paddingBottom="@dimen/create_event_image_padding"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_event_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llEventDetailsLocation" />
 
     <TextView
-            android:id="@+id/tvJoinTelegramGroupButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/open_telegram_group"
-            android:background="@android:color/white"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/create_event_button_font_size"
-            android:textStyle="bold"
-            android:paddingTop="@dimen/create_event_button_padding_vertical"
-            android:paddingBottom="@dimen/create_event_button_padding_vertical"
-            app:layout_constraintTop_toBottomOf="@id/svEventDetailsScrollview"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/tvEventDetailsTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:hint="HH:MM"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/tvEventDetailsDate" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_access_time_24px"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <TextView
+        android:id="@+id/tvEventDetailsCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
+        android:layout_weight="1"
+        android:hint="Category"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/tvEventDetailsLocation" />
+
+    <TextView
+        android:id="@+id/tvEventDetailsLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:hint="Location"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/tvEventDetailsTime" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_description_24px"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_location_pin"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/tvEventDetailsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="224dp"
+        android:layout_weight="1"
+        android:hint="Description"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEventDetailsDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        android:layout_weight="1"
+        android:hint="Date DD/MM/YY"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/tvEventDetailsDescription" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_cal_24"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="212dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_category_24px"
+        android:tint="@color/colorPrimaryDark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/llEventDetailsLocation"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/tvJoinTelegramGroupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="@dimen/create_event_button_padding_vertical"
+        android:paddingBottom="@dimen/create_event_button_padding_vertical"
+        android:text="@string/open_telegram_group"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/create_event_button_font_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/tvEventDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Title"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

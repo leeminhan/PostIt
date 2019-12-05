@@ -28,10 +28,11 @@
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginRight="16dp"
+
                     app:cardElevation="8dp"
-                    app:cardCornerRadius="8dp"/>
+                    app:cardCornerRadius="16dp"/>
             <com.example.postit.createevent.ImageCardView
                     android:id="@+id/games_card"
                     app:cardString="Games"
