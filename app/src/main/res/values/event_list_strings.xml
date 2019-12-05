@@ -10,4 +10,6 @@
     <string name="event_list_music_subtitle">Let loose</string>
     <string name="event_list_shopping_title">Shopping events</string>
     <string name="event_list_shopping_subtitle">Get some groceries!</string>
+    <string name="event_list_recommendations_title">Recommended events</string>
+    <string name="event_list_recommendations_subtitle">Events based on your preferences</string>
 </resources>
