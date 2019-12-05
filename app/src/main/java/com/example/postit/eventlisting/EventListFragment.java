@@ -53,6 +53,7 @@ public class EventListFragment extends Fragment implements FragmentTransition {
         eatingRecycler = getView().findViewById(R.id.recycler_eating_list);
         musicRecycler = getView().findViewById(R.id.recycler_music_list);
         shoppingRecycler = getView().findViewById(R.id.recycler_shopping_list);
+        recommendedRecycler = getView().findViewById(R.id.recycler_recommendations_list);
     }
 
     @Override

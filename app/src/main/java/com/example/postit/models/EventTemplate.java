@@ -82,7 +82,7 @@ public class EventTemplate extends Event {
                 "",
                 "",
                 context.getString(R.string.event_eating_default_telegram),
-                R.drawable.sutd_logo);
+                R.drawable.default_event_picture);
     }
 
     public static EventTemplate sportsEvent() {
@@ -96,7 +96,7 @@ public class EventTemplate extends Event {
                                 "",
                                 "",
                                 context.getString(R.string.event_sports_default_telegram),
-                                R.drawable.sutd_logo);
+                                R.drawable.default_event_picture);
     }
 
     public static EventTemplate gamesEvent() {
@@ -110,7 +110,7 @@ public class EventTemplate extends Event {
                 "",
                 "",
                 context.getString(R.string.event_games_default_telegram),
-                R.drawable.sutd_logo);
+                R.drawable.default_event_picture);
     }
 
     public static EventTemplate eatingEvent() {
@@ -124,7 +124,7 @@ public class EventTemplate extends Event {
                 "",
                 context.getString(R.string.event_eating_default_descrip),
                 context.getString(R.string.event_eating_default_telegram),
-                R.drawable.sutd_logo);
+                R.drawable.default_event_picture);
     }
 
     public static EventTemplate musicEvent() {
@@ -138,7 +138,7 @@ public class EventTemplate extends Event {
                 "",
                 context.getString(R.string.event_music_default_descrip),
                 context.getString(R.string.event_music_default_telegram),
-                R.drawable.sutd_logo);
+                R.drawable.default_event_picture);
     }
 
     public static EventTemplate shoppingEvent() {
@@ -152,7 +152,7 @@ public class EventTemplate extends Event {
                 "",
                 "",
                 context.getString(R.string.event_shopping_default_telegram),
-                R.drawable.sutd_logo);
+                R.drawable.default_event_picture);
     }
 
     private static String getCurrentDateStr() {

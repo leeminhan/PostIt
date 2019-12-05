@@ -17,7 +17,7 @@
             android:layout_height="match_parent">
         <ImageView
                 android:id="@+id/event_card_image"
-                android:src="@drawable/sutd_logo"
+                android:src="@drawable/default_event_picture"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:scaleType="fitXY"

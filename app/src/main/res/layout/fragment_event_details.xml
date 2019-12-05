@@ -45,7 +45,7 @@
                     android:paddingRight="@dimen/create_event_image_padding"
                     android:paddingTop="@dimen/create_event_image_padding"
                     android:paddingBottom="@dimen/create_event_image_padding"
-                    android:src="@drawable/sutd_logo"/>
+                    android:src="@drawable/default_event_picture"/>
 
             <LinearLayout
                     android:id="@+id/llEventDetailsCategory"
