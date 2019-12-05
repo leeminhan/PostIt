@@ -34,6 +34,8 @@ import java.util.Map;
 
 
 public class Fragment2 extends Fragment {
+    static Integer count;
+
 
     public int convert(int a) {
         return ((int) (a * (getActivity()).getResources().getDisplayMetrics().density));
@@ -46,6 +48,13 @@ public class Fragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+        if(count==null){
+            count=1;
+        }else{
+            count+=1;
+            System.out.println("The second fragment has been increased again");
+            System.out.println(count);
+        }
         View view = inflater.inflate(R.layout.fragment_myactivities, container, false);
 
         //View view = findViewById(R.layout.activity_myactivities);
@@ -113,15 +122,26 @@ public class Fragment2 extends Fragment {
 
                             String title = (String) data.getString("title");
                             String date = (String) data.getString("date_activity");
+
+                            String year = date.substring(0,4);
+                            String month = date.substring(4,6);
+                            String day = date.substring(6,8);
+                            String time = date.substring(8,10) + ":" + date.substring(10,12);
+
+                            date = day+"."+month+"."+year;
+
                             //Integer num_ppl = (Integer)data.get(i).get("people");
                             //Integer max_ppl = (Integer)data.get(i).get("max_people");
-                            String imguri = (String) data.getString("image_uri");
+
+                            String imguri="https://i.ibb.co/y85SFTK/micro1.jpg";
+
+                            //String imguri = (String) data.getString("image_uri");
                             System.out.println("Image Link!!!");
                             System.out.println(imguri);
                             String location = (String) data.getString("venue");
                             String category = (String) data.getString("category");
                             //String time = (String)data.get("time");
-                            String time = "18:45";
+
                             String organizer = (String) data.getString("creator");
                         /*
                         String jsonString2 = res2.to();
@@ -154,7 +174,9 @@ public class Fragment2 extends Fragment {
                             params.setMargins(convert(10), convert(10), convert(10), 0);
 
 
-                            cardView.setCardBackgroundColor(Color.parseColor("#91C2E2"));
+                            cardView.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
+                            //cardView.setCardBackgroundColor(getResources().getColor(R.color.LoginRegistrationPreferences));
+
                             cardView.setLayoutParams(params);
                             cardView.setRadius(15);
 
@@ -163,21 +185,26 @@ public class Fragment2 extends Fragment {
                             LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams((LinearLayout.LayoutParams.WRAP_CONTENT),
                                     LinearLayout.LayoutParams.WRAP_CONTENT);
 
-                            params2.setMargins(convert(22), convert(11), 0, convert(10));
+                            params2.setMargins(convert(19), convert(8), 0, convert(10));
                             textView.setLayoutParams(params2);
 
                             textView.setText(title);
-                            textView.setTextSize(24);
+                            textView.setTextSize(25);
                             textView.setTypeface(null, Typeface.BOLD);
                             textView.setTextColor(Color.parseColor("#303F9F"));
 
                             cardView.addView(textView);
 
                             //add image to card
+
+
+
                             ImageView imageView = new ImageView(getActivity());
-                            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(86),
-                                    convert(82)); //left, top, right, bottom
-                            params3.setMargins(convert(255), convert(19), 0, convert(10));
+                            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(120),
+                                    convert(75)); //left, top, right, bottom
+
+                            params3.setMargins(convert(18), convert(44), 0, convert(10));
+
                             imageView.setLayoutParams(params3);
 
                             com.example.postit.notifications.getImage task = new com.example.postit.notifications.getImage();
@@ -190,18 +217,22 @@ public class Fragment2 extends Fragment {
                             TextView eventdescp = new TextView(getActivity());
                             LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(convert(177),
                                     convert(70));
-                            params5.setMargins(convert(22), convert(44), 0, 10);
+                            params5.setMargins(convert(235), convert(34), 0, 10);
                             eventdescp.setLayoutParams(params5);
 
-                            String sourcedate = "<b>Date:</b> " + date + "<br/>";
-                            String sourceorganizer = time + " || " + "<b>"+organizer+"</b> " + "<br/>";
-                            String sourcelocation = "<b>Location:</b> " + location + "<br/>";
-                            String sourcecategory = "<b>Category:</b> " + category;
+                            String sourcedate = "<b><strong>Date:</strong></b> " + date + "<br/>";
+                            String sourceorganizer = time + " || " + "<b><strong>"+organizer+"</strong></b> " + "<br/>";
+                            String sourcelocation = "<b><strong>Location:</strong></b> " + location + "<br/>";
+                            String sourcecategory = "<b><strong>Category:</strong></b> " + category;
 
                             eventdescp.setText(Html.fromHtml(sourcedate  +
                                     sourceorganizer +
                                     sourcelocation +
                                     sourcecategory));
+
+                            eventdescp.setTextColor(Color.parseColor("#303F9F"));
+
+                            eventdescp.setTextSize(15);
                             cardView.addView(eventdescp);
 
                             //add accept button to card
@@ -224,14 +255,14 @@ public class Fragment2 extends Fragment {
                             System.out.println("Failed to convert JSONObject");
                         }
                             }, (Exception err, Object objn) -> {
-                        Log.e(TAG, err.getMessage());
+                     //   Log.e(TAG, err.getMessage());
                     });
 
 
 
                 }
             }catch(Exception e){
-                System.out.println(e.toString());
+              //  System.out.println(e.toString());
 
             }
 
@@ -239,7 +270,7 @@ public class Fragment2 extends Fragment {
 
             //end of the outer HTTP Call, keep end of inner one before this
         }, (Exception err, Object obj) -> {
-            Log.e(TAG, err.getMessage());
+           // Log.e(TAG, err.getMessage());
 
         });
 

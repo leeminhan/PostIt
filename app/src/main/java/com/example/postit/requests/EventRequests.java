@@ -96,6 +96,9 @@ public class EventRequests extends ActivityRequests {
     public static void getUserEvents(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
         // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
         final String url = getUserEventsEndpoint2 + username;
+
+        System.out.println("This is the user events url called");
+        System.out.println(url);
         HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         final JSONObject json = new JSONObject(map);
