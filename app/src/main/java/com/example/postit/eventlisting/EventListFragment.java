@@ -22,11 +22,13 @@ public class EventListFragment extends Fragment implements FragmentTransition {
     private RecyclerView eatingRecycler;
     private RecyclerView musicRecycler;
     private RecyclerView shoppingRecycler;
+    private RecyclerView recommendedRecycler;
     private RecyclerView.Adapter sportsAdapter;
     private RecyclerView.Adapter gamesAdapter;
     private RecyclerView.Adapter eatingAdapter;
     private RecyclerView.Adapter musicAdapter;
     private RecyclerView.Adapter shoppingAdapter;
+    private RecyclerView.Adapter recommendedAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -84,6 +86,10 @@ public class EventListFragment extends Fragment implements FragmentTransition {
                 shoppingRecycler.setAdapter(shoppingAdapter);
 
         }
+    }
+
+    public void setRecommendedEvents(Event[] events) {
+
     }
 
 }
