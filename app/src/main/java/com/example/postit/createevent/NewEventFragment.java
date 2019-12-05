@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.postit.R;
+import com.example.postit.User;
 import com.example.postit.models.Event;
 import com.example.postit.models.EventCategory;
 import com.example.postit.models.EventTemplate;
@@ -48,6 +49,7 @@ public class NewEventFragment extends Fragment {
     private EventDetailRowView eventLocationField;
     private EventDetailRowView eventDescripField;
     private EventDetailRowView eventMaxPplField;
+    private EventDetailRowView eventTelegramField;
     private TextView createEventButton;
     private Uri imagePath;
 
@@ -98,6 +100,7 @@ public class NewEventFragment extends Fragment {
         eventLocationField = getView().findViewById(R.id.event_location_field);
         eventDescripField = getView().findViewById(R.id.event_descrip_field);
         eventMaxPplField = getView().findViewById(R.id.event_max_ppl_field);
+        eventTelegramField = getView().findViewById(R.id.event_telegram_field);
         createEventButton = getView().findViewById(R.id.create_event_button);
         imageView = getView().findViewById(R.id.new_event_image);
     }
@@ -118,6 +121,7 @@ public class NewEventFragment extends Fragment {
         eventTimeField.setText(template.getDefaultTime());
         eventLocationField.setText(template.getDefaultLocation());
         eventDescripField.setText(template.getDefaultDescrip());
+        eventTelegramField.setText(template.getDefaultTelegramGroup());
 
         imagePath = template.getImagePath();
 
@@ -131,12 +135,14 @@ public class NewEventFragment extends Fragment {
     private Event gatherEventDetails() throws InvalidInputException {
         Event event = new Event();
         event.setCategory(new Event.ByViewSetter(eventCategoryField))
+                .setCreator(User.getUsername())
                 .setTitle(new Event.ByViewSetter(eventTitleField))
                 .setLocation(new Event.ByViewSetter(eventLocationField))
                 .setDate(new Event.ByViewSetter(eventDateField))
                 .setTime(new Event.ByViewSetter(eventTimeField))
                 .setDescrip(new Event.ByViewSetter(eventDescripField))
                 .setMaxPpl(new Event.ByViewSetter(eventMaxPplField))
+                .setTelegramGroup(new Event.ByViewSetter(eventTelegramField))
                 .setImagePath(imagePath);
 
         return event;

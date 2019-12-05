@@ -26,7 +26,7 @@ public class EventTemplate extends Event {
     private String defaultDescrip;
 
     private Uri defaultImagePath;
-
+    private String defaultTelegramGroup;
 
     public static EventTemplate createEventTemplate(@Nullable EventCategory category) {
         if (category == null) {
@@ -57,6 +57,7 @@ public class EventTemplate extends Event {
                          String defaultLocation,
                          String defaultMaxPpl,
                          String defaultDescrip,
+                         String defaultTelegramGroup,
                          int defaultDrawableId) {
 
         setDefaultCategory(defaultCategory);
@@ -67,6 +68,7 @@ public class EventTemplate extends Event {
         setDefaultMaxPpl(defaultMaxPpl);
         setDefaultDescrip(defaultDescrip);
         setDefaultImagePath(context, defaultDrawableId);
+        setDefaultTelegramGroup(defaultTelegramGroup);
     }
 
     public static EventTemplate emptyEvent() {
@@ -79,6 +81,7 @@ public class EventTemplate extends Event {
                 "",
                 "",
                 "",
+                context.getString(R.string.event_eating_default_telegram),
                 R.drawable.sutd_logo);
     }
 
@@ -92,6 +95,7 @@ public class EventTemplate extends Event {
                                 context.getString(R.string.event_sports_default_location),
                                 "",
                                 "",
+                                context.getString(R.string.event_sports_default_telegram),
                                 R.drawable.sutd_logo);
     }
 
@@ -105,6 +109,7 @@ public class EventTemplate extends Event {
                 context.getString(R.string.event_games_default_location),
                 "",
                 "",
+                context.getString(R.string.event_games_default_telegram),
                 R.drawable.sutd_logo);
     }
 
@@ -118,6 +123,7 @@ public class EventTemplate extends Event {
                 context.getString(R.string.event_eating_default_location),
                 "",
                 context.getString(R.string.event_eating_default_descrip),
+                context.getString(R.string.event_eating_default_telegram),
                 R.drawable.sutd_logo);
     }
 
@@ -131,6 +137,7 @@ public class EventTemplate extends Event {
                 context.getString(R.string.event_music_default_location),
                 "",
                 context.getString(R.string.event_music_default_descrip),
+                context.getString(R.string.event_music_default_telegram),
                 R.drawable.sutd_logo);
     }
 
@@ -144,6 +151,7 @@ public class EventTemplate extends Event {
                 context.getString(R.string.event_shopping_default_location),
                 "",
                 "",
+                context.getString(R.string.event_shopping_default_telegram),
                 R.drawable.sutd_logo);
     }
 
@@ -199,6 +207,10 @@ public class EventTemplate extends Event {
         return defaultImagePath;
     }
 
+    public String getDefaultTelegramGroup() {
+        return defaultTelegramGroup;
+    }
+
     private void setDefaultCategory(String category) {
         this.defaultCategory = category;
     }
@@ -217,6 +229,10 @@ public class EventTemplate extends Event {
 
     private void setDefaultLocation(String location) {
         this.defaultLocation = location;
+    }
+
+    private void setDefaultTelegramGroup(String telegramGroup) {
+        this.defaultTelegramGroup = telegramGroup;
     }
 
     private void setDefaultMaxPpl(String maxPpl) {

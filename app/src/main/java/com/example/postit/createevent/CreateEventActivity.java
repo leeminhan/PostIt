@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.Nullable;
 import com.example.postit.FirebaseStorageController;
+import com.example.postit.requests.EventRequests;
 import com.example.postit.utils.GenUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.Fragment;
@@ -87,19 +88,15 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
 
     private void publishEvent(Event event) {
         // TODO: Replace Url with actual backend API Url
-        final String url = getString(R.string.backend_base_url);
-        final JSONObject json = new JSONObject(event.toMap());
-
-        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, url, json, (JSONObject res) -> {
+        EventRequests.createEvent(event, (Object res) -> {
             Toast.makeText(getApplicationContext(), "Event Published", Toast.LENGTH_SHORT).show();
             Log.d(TAG, res.toString());
-        }, (VolleyError err) -> {
-            Log.e(TAG, err.getMessage() == null ? "Unknown Error" : err.getMessage());
+        }, (Exception ex, Object obj) -> {
+            Log.e(TAG, ex.getMessage() == null ? "Unknown Error" : ex.getMessage());
             Toast.makeText(getApplicationContext(), "Error publishing event", Toast.LENGTH_SHORT).show();
         });
-        ReqUtil.getInstance(this).addToRequestQueue(req);
 
-        finish();
+        menu.clickMenuItem(this, R.id.navigation_view_events);
     }
 
     @Override
