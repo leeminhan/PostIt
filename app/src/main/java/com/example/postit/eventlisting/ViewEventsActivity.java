@@ -23,6 +23,15 @@ public class ViewEventsActivity extends AppCompatActivity implements BottomNavMe
     private BottomNavMenu menu;
 
     @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

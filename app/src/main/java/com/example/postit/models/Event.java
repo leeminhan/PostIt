@@ -164,7 +164,9 @@ public class Event {
     public String getShortDate() {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
-            return dateFormat.format(dateFormat.parse(date.toString()));
+            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+            Date datem = df.parse(date.toString());
+            return dateFormat.format(datem);
         } catch (ParseException ex) {
             return "09/11";
         }
@@ -183,7 +185,7 @@ public class Event {
             Date datem = df.parse(date);
             SimpleDateFormat newDf = new SimpleDateFormat("dd/MM/yyyy");
             setDate(newDf.format(datem));
-            SimpleDateFormat newDfTime = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat newDfTime = new SimpleDateFormat("kk:mm");
             setTime(newDfTime.format(datem));
             return this;
         }
@@ -202,8 +204,15 @@ public class Event {
     }
 
     public String getShortTime() {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        return timeFormat.format(time);
+        try {
+            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+            Date datem = df.parse(date.toString());
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            return timeFormat.format(datem);
+        } catch (ParseException ex) {
+            return "12:23";
+        }
+
 
     }
 

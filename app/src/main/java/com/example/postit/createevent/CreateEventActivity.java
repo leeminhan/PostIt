@@ -2,6 +2,7 @@ package com.example.postit.createevent;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.view.Menu;
 import androidx.annotation.Nullable;
 import com.example.postit.FirebaseStorageController;
 import com.example.postit.requests.EventRequests;
@@ -46,6 +47,12 @@ public class CreateEventActivity extends AppCompatActivity implements NewEventFr
 
         navigation = findViewById(R.id.navbar_create_event);
         menu = new BottomNavMenu(this, navigation);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override

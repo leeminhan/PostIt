@@ -78,6 +78,7 @@ public class EventDetailsFragment extends Fragment implements FragmentTransition
     }
 
     private void setEventDetails() {
+        tvEventDetailsTitle.setText(event.getTitle());
         tvEventDetailsDate.setText(event.getDateStr());
         tvEventDetailsCategory.setText(event.getCategoryStr(true));
         Picasso.get().load(event.getWebImgUrl()).into(ivEventDetailsImage);

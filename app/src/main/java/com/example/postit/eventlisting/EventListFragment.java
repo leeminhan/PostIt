@@ -15,9 +15,12 @@ import com.example.postit.R;
 import com.example.postit.models.Event;
 import com.example.postit.models.FragmentTransition;
 
+import java.util.ArrayList;
+
 public class EventListFragment extends Fragment implements FragmentTransition {
     private static final int frame = R.id.view_events_container;
     private final int LINEAR_SPACING = 36;
+    private ArrayList<RecyclerView> recyclerViews;
     private RecyclerView sportsRecycler;
     private RecyclerView gamesRecycler;
     private RecyclerView eatingRecycler;
@@ -54,6 +57,11 @@ public class EventListFragment extends Fragment implements FragmentTransition {
         musicRecycler = getView().findViewById(R.id.recycler_music_list);
         shoppingRecycler = getView().findViewById(R.id.recycler_shopping_list);
         recommendedRecycler = getView().findViewById(R.id.recycler_recommendations_list);
+
+//        for (RecyclerView view : recyclerViews) {
+//            LayoutInflater.from(view.getContext()).inflate(R.layout.event_card_view, view, false);
+//        }
+
     }
 
     @Override

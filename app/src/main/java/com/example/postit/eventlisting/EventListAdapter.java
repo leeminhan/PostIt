@@ -1,6 +1,8 @@
 package com.example.postit.eventlisting;
 
 import android.content.Intent;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -35,6 +37,14 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
     }
 
     public EventListAdapter(EventListFragment fragment, Event[] events) {
+        if (events.length == 0) {
+            Event[] eventDummy = new Event[2];
+            eventDummy[0] = new Event().setTitle("Dummy Event");
+            eventDummy[1] = new Event().setTitle("Dummy Event");
+            this.events = eventDummy;
+            this.fragment = fragment;
+            return;
+        }
         this.events = events;
         this.fragment = fragment;
     }
@@ -49,6 +59,15 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Even
 
     @Override
     public void onBindViewHolder(@NonNull EventListViewHolder eventListViewHolder, int i) {
+
+        if (events[i].getTitle().equals("Dummy Event")) {
+            eventListViewHolder.title.setText("No events");
+            eventListViewHolder.title.setGravity(Gravity.CENTER);
+            eventListViewHolder.time.setVisibility(View.GONE);
+
+            return;
+        }
+
         if (events[i].getBitmap() != null) {
             eventListViewHolder.image.setImageBitmap(events[i].getBitmap());
         } else {
