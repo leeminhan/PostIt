@@ -126,6 +126,13 @@ public class Event {
         return categoryMapping.get(category);
     }
 
+    public String getCategoryStr(boolean upper) {
+        if (upper) {
+            return getCategoryStr().substring(0, 1).toUpperCase() + getCategoryStr().substring(1);
+        }
+        return getCategoryStr();
+    }
+
     public Event setCategory(String category) {
         for (Map.Entry<Category, String> entry: categoryMapping.entrySet()) {
             if (category.toLowerCase().equals(entry.getValue())) {

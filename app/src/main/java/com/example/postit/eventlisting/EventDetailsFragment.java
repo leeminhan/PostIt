@@ -32,11 +32,11 @@ public class EventDetailsFragment extends Fragment implements FragmentTransition
     // initialise Views
     TextView tvEventDetailsTitle;
     ImageView ivEventDetailsImage;
-    EventDetailRowView rvEventDetailsCategory;
-    EventDetailRowView rvEventDetailsDate;
-    EventDetailRowView rvEventDetailsTime;
-    EventDetailRowView rvEventDetailsLocation;
-    EventDetailRowView rvEventDetailsDescription;
+    TextView tvEventDetailsCategory;
+    TextView tvEventDetailsDate;
+    TextView tvEventDetailsTime;
+    TextView tvEventDetailsLocation;
+    TextView tvEventDetailsDescription;
     TextView tvJoinTelegramGroupButton;
     private Event event;
 
@@ -70,20 +70,20 @@ public class EventDetailsFragment extends Fragment implements FragmentTransition
         // bind the xml widget which this activity
         tvEventDetailsTitle = getView().findViewById(R.id.tvEventDetailsTitle);
         ivEventDetailsImage = getView().findViewById(R.id.ivEventDetailsImage);
-        rvEventDetailsCategory = getView().findViewById(R.id.rvEventDetailsCategory);
-        rvEventDetailsDate = getView().findViewById(R.id.rvEventDetailsDate);
-        rvEventDetailsTime = getView().findViewById(R.id.rvEventDetailsTime);
-        rvEventDetailsLocation = getView().findViewById(R.id.rvEventDetailsLocation);
-        rvEventDetailsDescription = getView().findViewById(R.id.rvEventDetailsDescription);
+        tvEventDetailsCategory = getView().findViewById(R.id.tvEventDetailsCategory);
+        tvEventDetailsDate = getView().findViewById(R.id.tvEventDetailsDate);
+        tvEventDetailsTime = getView().findViewById(R.id.tvEventDetailsTime);
+        tvEventDetailsLocation = getView().findViewById(R.id.tvEventDetailsLocation);
+        tvEventDetailsDescription = getView().findViewById(R.id.tvEventDetailsDescription);
     }
 
     private void setEventDetails() {
-        rvEventDetailsDate.setText(event.getDateStr());
-        rvEventDetailsCategory.setText(event.getCategoryStr());
+        tvEventDetailsDate.setText(event.getDateStr());
+        tvEventDetailsCategory.setText(event.getCategoryStr(true));
         Picasso.get().load(event.getWebImgUrl()).into(ivEventDetailsImage);
-        rvEventDetailsTime.setText(event.getTime());
-        rvEventDetailsLocation.setText(event.getLocation());
-        rvEventDetailsDescription.setText(event.getDescrip());
+        tvEventDetailsTime.setText(event.getTime());
+        tvEventDetailsLocation.setText(event.getLocation());
+        tvEventDetailsDescription.setText(event.getDescrip());
     }
 
     @Override
