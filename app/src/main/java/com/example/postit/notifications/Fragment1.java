@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ import java.util.Map;
 
 
 public class Fragment1 extends Fragment {
+
+    static ArrayList finished_recommendations;
 
     public int convert(int a) {
         return ((int) (a * (getActivity()).getResources().getDisplayMetrics().density));
@@ -87,6 +90,14 @@ public class Fragment1 extends Fragment {
 
                             String title = (String) data.getString("title");
                             String date = (String) data.getString("date_activity");
+
+                            String year = date.substring(0,4);
+                            String month = date.substring(4,6);
+                            String day = date.substring(6,8);
+                            String time = date.substring(8,10) + ":" + date.substring(10,12);
+
+                            date = day+"."+month+"."+year;
+
                             //Integer num_ppl = (Integer)data.get(i).get("people");
                             //Integer max_ppl = (Integer)data.get(i).get("max_people");
                             String imguri = (String) data.getString("image_uri");
@@ -95,7 +106,7 @@ public class Fragment1 extends Fragment {
                             String location = (String) data.getString("venue");
                             String category = (String) data.getString("category");
                             //String time = (String)data.get("time");
-                            String time = "18:45";
+
                             String organizer = (String) data.getString("creator");
                         /*
                         String jsonString2 = res2.to();
@@ -168,10 +179,10 @@ public class Fragment1 extends Fragment {
                             params5.setMargins(convert(22), convert(44), 0, 10);
                             eventdescp.setLayoutParams(params5);
 
-                            String sourcedate = "<b>Date:</b> " + date + "<br/>";
-                            String sourceorganizer = time + " || " + "<b>"+organizer+"</b> " + "<br/>";
-                            String sourcelocation = "<b>Location:</b> " + location + "<br/>";
-                            String sourcecategory = "<b>Category:</b> " + category;
+                            String sourcedate = "<b><font size=\"6\">Date:</font></b> " + date + "<br/>";
+                            String sourceorganizer = time + " || " + "<b><font size=\"6\">"+organizer+"</font></b> " + "<br/>";
+                            String sourcelocation = "<b><font size=\"6\">Location:</font></b> " + location + "<br/>";
+                            String sourcecategory = "<b><font size=\"6\">Category:</font></b> " + category;
 
                             eventdescp.setText(Html.fromHtml(sourcedate  +
                                     sourceorganizer +
@@ -210,7 +221,7 @@ public class Fragment1 extends Fragment {
 
             //end of the outer HTTP Call, keep end of inner one before this
         }, (Exception err, Object obj) -> {
-            Log.e(TAG, err.getMessage());
+           // Log.e(TAG, err.getMessage());
         });
 
         System.out.println("Printing recommendations now!!!!!!!!!!!!!!");
@@ -270,6 +281,16 @@ public class Fragment1 extends Fragment {
 
                             String title = (String) data.getString("title");
                             String date = (String) data.getString("date_activity");
+
+                            String year = date.substring(0,4);
+                            String month = date.substring(4,6);
+                            String day = date.substring(6,8);
+                            String time = date.substring(8,10) + ":" + date.substring(10,12);
+
+                            date = day+"."+month+"."+year;
+
+                                    //201912031600
+
                             //Integer num_ppl = (Integer)data.get(i).get("people");
                             //Integer max_ppl = (Integer)data.get(i).get("max_people");
                             String imguri = (String) data.getString("image_uri");
@@ -278,31 +299,7 @@ public class Fragment1 extends Fragment {
                             String location = (String) data.getString("venue");
                             String category = (String) data.getString("category");
                             //String time = (String)data.get("time");
-                            String time = "18:45";
                             String organizer = (String) data.getString("creator");
-                        /*
-                        String jsonString2 = res2.to();
-                        System.out.println(jsonString2);
-
-                        ArrayList<Map<String, Object>> datalist = new Gson().fromJson(
-                                jsonString2, new TypeToken<ArrayList<Map<String, Object>>>() {}.getType()
-                        );
-
-                        Map<String, Object> data=datalist.get(0);
-                        String title = (String)data.get("title");
-                        String date = (String)data.get("date_activity");
-                        //Integer num_ppl = (Integer)data.get(i).get("people");
-                        //Integer max_ppl = (Integer)data.get(i).get("max_people");
-                        String imguri = (String) data.get("image_uri");
-                        System.out.println("Image Link!!!");
-                        System.out.println(imguri);
-                        String location = (String) data.get("venue");
-                        String category = (String)data.get("category");
-                        //String time = (String)data.get("time");
-                        String time = "18:45";
-                        String organizer = (String)data.get("creator");
-
-                         */
 
 
                             CardView cardView = new CardView(getActivity());
@@ -311,7 +308,8 @@ public class Fragment1 extends Fragment {
                             params.setMargins(convert(10), convert(10), convert(10), 0);
 
 
-                            cardView.setCardBackgroundColor(Color.parseColor("#91C2E2"));
+                            //cardView.setCardBackgroundColor(getResources().getColor(R.color.LoginRegistrationPreferences));
+                            cardView.setCardBackgroundColor(Color.parseColor("#E9EDF1"));
                             cardView.setLayoutParams(params);
                             cardView.setRadius(15);
 
@@ -330,6 +328,7 @@ public class Fragment1 extends Fragment {
 
                             cardView.addView(textView);
 
+                            /* //imageview im replacing with accept and reject button
                             //add image to card
                             ImageView imageView = new ImageView(getActivity());
                             LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(86),
@@ -343,6 +342,31 @@ public class Fragment1 extends Fragment {
 
                             cardView.addView(imageView);
 
+                             */
+
+                            /*
+
+                            LinearLayout.LayoutParams params3 = new LinearLayout.LayoutParams(convert(86),
+                                    convert(82)); //left, top, right, bottom
+                            params3.setMargins(convert(245), convert(19), 0, convert(10));
+
+                            ImageButton yes = new ImageButton(getActivity());
+                            yes.setBackgroundResource(R.drawable.yesbutton);
+                            yes.setLayoutParams(params3);
+                            cardView.addView(yes);
+
+                            LinearLayout.LayoutParams params31 = new LinearLayout.LayoutParams(convert(86),
+                                    convert(82)); //left, top, right, bottom
+                            params31.setMargins(convert(265), convert(19), 0, convert(10));
+
+                            ImageButton no = new ImageButton(getActivity());
+                            no.setBackgroundResource(R.drawable.nobutton);
+
+                            no.setLayoutParams(params31);
+                            cardView.addView(no);
+
+                             */
+
                             //add event description to card
                             TextView eventdescp = new TextView(getActivity());
                             LinearLayout.LayoutParams params5 = new LinearLayout.LayoutParams(convert(177),
@@ -350,10 +374,10 @@ public class Fragment1 extends Fragment {
                             params5.setMargins(convert(22), convert(44), 0, 10);
                             eventdescp.setLayoutParams(params5);
 
-                            String sourcedate = "<b>Date:</b> " + date + "<br/>";
-                            String sourceorganizer = time + " || " + "<b>"+organizer+"</b> " + "<br/>";
-                            String sourcelocation = "<b>Location:</b> " + location + "<br/>";
-                            String sourcecategory = "<b>Category:</b> " + category;
+                            String sourcedate = "<b><font size=\"6\">Date:</font></b> " + date + "<br/>";
+                            String sourceorganizer = time + " || " + "<b><font size=\"6\">"+organizer+"</font></b> " + "<br/>";
+                            String sourcelocation = "<b><font size=\"6\">Location:</font></b> " + location + "<br/>";
+                            String sourcecategory = "<b><font size=\"6\">Category:</font></b> " + category;
 
                             eventdescp.setText(Html.fromHtml(sourcedate  +
                                     sourceorganizer +
@@ -382,12 +406,12 @@ public class Fragment1 extends Fragment {
                         }
 
     }, (Exception err, Object objn) -> {
-        Log.e(TAG, err.getMessage());
+        //Log.e(TAG, err.getMessage());
     });
 
 }
             }catch(Exception e){
-//                    System.out.println(e.toString());
+                   // System.out.println(e.toString());
 
                     }
 
@@ -395,7 +419,7 @@ public class Fragment1 extends Fragment {
 
                     //end of the outer HTTP Call, keep end of inner one before this
                     }, (Exception err, Object obj) -> {
-//                    Log.e(TAG, err.getMessage());
+                   // Log.e(TAG, err.getMessage());
                     });
 
 

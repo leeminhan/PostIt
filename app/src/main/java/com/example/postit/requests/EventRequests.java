@@ -96,6 +96,9 @@ public class EventRequests extends ActivityRequests {
     public static void getUserEvents(String username, RequestSuccessListener successL, RequestErrorListener errorL) {
         // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
         final String url = getUserEventsEndpoint2 + username;
+
+        System.out.println("This is the user events url called");
+        System.out.println(url);
         HashMap<String, String> map = new HashMap<>();
         map.put("username", username);
         final JSONObject json = new JSONObject(map);
@@ -134,20 +137,25 @@ public class EventRequests extends ActivityRequests {
     public static void getEventDetails(Double id, RequestSuccessListener successL, RequestErrorListener errorL) throws JSONException
 
     {
+
         Integer id2 = id.intValue();
         // final String url = String.format("%s%s", backendBaseUrl, getUserEventsEndpoint);
         final String url = getEventDetailEndpoint_base + id2.toString();
-        System.out.println("URL called is");
-        System.out.println(url);
+        Log.d("test8", url);
         HashMap<String, String> map = new HashMap<>();
         map.put("id", id2.toString());
         final JSONObject json = new JSONObject(map);
 
         JSONArray json2 = new JSONArray();
         json2.put(json);
+        Log.d("test12",  "aadasf");
 
-        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, json2, successL::onSuccess,
+        JsonArrayRequest req = new JsonArrayRequest(Request.Method.GET, url, json2, (success) -> {
+            Log.d("test13",  "aadasf");
+            successL.onSuccess(success);
+        },
                 (VolleyError err) -> {
+                    Log.d("test14",  "aadasf");
                     err.printStackTrace();
                     errorL.onError(err, null);
                 });

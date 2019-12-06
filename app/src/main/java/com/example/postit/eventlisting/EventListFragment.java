@@ -104,7 +104,8 @@ public class EventListFragment extends Fragment implements FragmentTransition {
     }
 
     public void setRecommendedEvents(Event[] events) {
-
+        recommendedAdapter = new EventListAdapter(this, events);
+        recommendedRecycler.setAdapter(recommendedAdapter);
     }
 
 }

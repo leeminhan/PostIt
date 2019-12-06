@@ -9,4 +9,5 @@
     <color name="colorEventListSubtitle">#878787</color>
     <color name="LoginRegistrationPreferences">#D5C8BA</color>
     <color name="font_black">#0A0A0A</color>
+    <color name="colorEventCategory">#b0b0b0</color>
 </resources>

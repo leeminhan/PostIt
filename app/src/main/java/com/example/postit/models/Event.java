@@ -185,7 +185,7 @@ public class Event {
             Date datem = df.parse(date);
             SimpleDateFormat newDf = new SimpleDateFormat("dd/MM/yyyy");
             setDate(newDf.format(datem));
-            SimpleDateFormat newDfTime = new SimpleDateFormat("kk:mm");
+            SimpleDateFormat newDfTime = new SimpleDateFormat("HH:mm");
             setTime(newDfTime.format(datem));
             return this;
         }
@@ -222,6 +222,7 @@ public class Event {
     }
 
     public Event setTime(String time) throws ParseException {
+        Log.d("settime", time);
         return setTime(GenUtils.getValidTime(time, GenUtils.TimeFormat.STANDARD));
     }
 
